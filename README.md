@@ -11,19 +11,13 @@ We are a team of 6 students from SMU and NTU, studying Law and Computer Science.
 
 ***
 
-# Team Mission Objective (replace line)
+# How can the efficiency of (MD&A) section drafting be improved?
 
 To (adress problem statement), our team has....
 
 
 # Technology Stack
-
-### Frontend
-1. Something
-2. Weewoo
-
-### Backend
-1. It's pretty cool
+- [Next.js](https://nextjs.org)
 
 
 ***
