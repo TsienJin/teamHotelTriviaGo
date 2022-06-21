@@ -2,7 +2,7 @@
 SMU LIT Hackathon 2022
 
 We are a team of 6 students from SMU and NTU, studying Law and Computer Science.
-- [Chen Xin Han | NTU Computer Science](https://github.com/imevahans){:target="_blank"}
+- [Chen Xin Han | NTU Computer Science](https://github.com/imevahans)
 - [Ho Shu Hao Eugene | SMU Law](LinkedIn Link)
 - [Martin Liu | SMU course](https://github.com/L1uM4rt1n)
 - [Ong Tsien Jin | NTU Computer Science](https://github.com/TsienJin)
