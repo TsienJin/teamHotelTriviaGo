@@ -17,7 +17,8 @@ To (adress problem statement), our team has....
 
 
 # Technology Stack
-- [Next.js](https://nextjs.org)
+- [Next.js](https://nextjs.org) hosted on [Vercel](https://vercel.com/)
+- [MongoDb](https://www.mongodb.com) hosted on [MongoDB Atlas Database](https://www.mongodb.com/atlas/database)
 
 
 ***
