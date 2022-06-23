@@ -1,6 +1,8 @@
 # Team Hotel Trivia Go
 SMU LIT Hackathon 2022
 
+# Xin Han <3 Martin
+
 We are a team of 6 students from SMU and NTU, studying Law and Computer Science.
 - [Chen Xin Han | NTU Computer Science](https://github.com/imevahans)
 - [Ho Shu Hao Eugene | SMU Law](https://www.linkedin.com/in/eugenehoshuhao)
