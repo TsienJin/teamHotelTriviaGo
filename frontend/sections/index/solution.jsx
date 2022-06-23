@@ -60,7 +60,7 @@ export default function SectionProuct({props}){
     const features = {
         standard: ['Keyword analysis'],
         elite: ['Keyword analysis', 'Automatic calculations'],
-        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable solutions'],
+        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable results', 'Automated MD&A drafting'],
     }
 
     return(
