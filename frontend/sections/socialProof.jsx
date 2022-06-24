@@ -15,7 +15,7 @@ function ImageContainter({props}){
   }
 
   return(
-    <div className="min-h-[60vh] sm:w-1/2 sm:ml-12 sm:-mt-16 sm:-mb-16 sm:min-h-[60vh] sm:max-w-[30vw] bg-cover bg-top rounded-t-lg sm:rounded-lg relative overflow-hidden
+    <div className="min-h-[60vh] sm:w-1/2 sm:ml-12 sm:-mt-16 sm:-mb-16 sm:min-h-[60vh] sm:max-w-[30vw] bg-cover bg-top rounded-t-lg sm:rounded-lg relative overflow-hidden cursor-default
     bg-[url(https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8)]" onClick={e=>{handleClick(e)}}>
       <div className='absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent via-transparent opacity-80'></div>
       <div className="absolute bottom-6 left-6">
@@ -49,7 +49,7 @@ function Testimony({props}){
 
 export default function SocialProof() {
   return (
-    <IndexSectionWrapper bgColour='bg-gray-100' heading='Testimonial' subHeading='Hear it from industry experts'>
+    <IndexSectionWrapper bgColour='bg-gray-100' heading='Testimonial' subHeading='Hear it from industry experts' headingColour='text-slate-900'>
         <div className='bg-white flex flex-col sm:flex-row sm:my-24 sm:justify-center sm:items-center rounded-lg shadow-lg'>
             <ImageContainter />
             <Testimony />
