@@ -7,7 +7,7 @@ import IndexSectionWrapper from '../../components/IndexSectionWrapper'
 function ButtonProductCTA({text="Link Button", link="/", target="_self"}){
     return(
         <Link href={link}>
-            <a>
+            <a className=''>
                 <div className="
                 bg-green-600 text-white text-md text-center py-2 px-4 rounded-lg shadow shadow-green-300 w-full
                 transition-all
@@ -35,26 +35,39 @@ function ProductFeature({text="Click me!"}){
 
 
 
-function ProductCard({tier="", description="", features=[]}){
+function ProductCard({tier="", description="", features=[], buttonText="", buttonLink=""}){
     return(
-        <div className='w-full h-full rounded-lg bg-white shadow-md max-w-sm'>
-            <div className='p-6 pb-2 w-full'>
-                <h4 className='text-2xl font-semibold text-left mb-1'>{tier}</h4>
-                <p className='font-light text-gray-600'>{description}</p>
-            </div>
-            <div className='p-6 py-4 w-full flex flex-col bg-gray-50 gap-y-4 flex-grow h-full'>
-                {features.map(item=>{
-                    return(
-                        <ProductFeature text={item}/>
-                    )
-                })}
-            </div>
-            <div className="p-6 pt-0 pb-5 bg-gray-50 rounded-b-lg w-full">
-                <ButtonProductCTA text='Try it now!' link='/solution'/>
+        <div className="rounded-lg bg-gray-50 shadow-md overflow-hidden">
+            <div className='max-w-sm h-full flex flex-col justify-between'>
+                <div className='p-6 pb-2 w-full bg-white'>
+                    <h4 className='text-2xl font-semibold text-left mb-1'>{tier}</h4>
+                    <p className='font-light text-gray-600'>{description}</p>
+                </div>
+                <div className='p-6 py-4 w-full flex flex-col bg-gray-50 gap-y-4 flex-grow'>
+                    {features.map(item=>{
+                        return(
+                            <ProductFeature text={item}/>
+                        )
+                    })}
+                </div>
+                <div className='p-6'>
+                    <ButtonProductCTA text={buttonText} link={buttonLink}/>
+                </div>
             </div>
         </div>
     )
 }
+
+// function ProductCard({tier="", description="", features=[], buttonText="", buttonLink=""}){
+//     return(
+//         <div className='p-10 h-full bg-white flex-1'>
+//             <p>{tier}</p>
+//             <p>{description}</p>
+//         </div>
+//     )
+// }
+
+
 
 
 
@@ -64,6 +77,8 @@ export default function SectionProuct({props}){
         standard: ['Keyword analysis'],
         elite: ['Keyword analysis', 'Automatic calculations'],
         supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting'],
+        enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', '99.9% SLA uptime guarenteed'],
+
     }
 
     const headingText = {
@@ -76,12 +91,15 @@ export default function SectionProuct({props}){
     const productDescription = {
         supreme: 
             "Easily automate the boring stuff using machine learning, stay focused on what you do best.",
+        enterprise: 
+            "Everything in Powered but with custom product integrations, contact us for more.",
     }
 
     return(
-        <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-blue-900' headingColour='text-white'>
-            <div className='flex flex-col w-full gap-8 justify-center items-center'>
-                <ProductCard tier={"Powered"} features={features.supreme} description={productDescription.supreme}/>
+        <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-gradient-to-tl from-blue-900 to-blue-700' headingColour='text-white'>
+            <div className='flex flex-col sm:flex-row w-full gap-8 justify-center'>
+                <ProductCard tier={"Powered"} features={features.supreme} description={productDescription.supreme} buttonText={"Try it now!"} buttonLink={"/solution"}/>
+                <ProductCard tier={"Enterprise"} features={features.enterprise} description={productDescription.enterprise} buttonText={"Contact us"} buttonLink={"/"}/>
             </div>
         </IndexSectionWrapper>
     )
