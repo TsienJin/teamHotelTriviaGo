@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Footer() {
@@ -9,7 +10,7 @@ export default function Footer() {
         </div>
         <div>
             <h6 className="font-semibold text-slate-700">Links</h6>
-            <p className='text-slate-500 cursor-pointer font-light'><a href="https://github.com/TsienJin/teamHotelTriviaGo" target={"_blank"}>GitHub Repo</a></p>
+            <p className='text-slate-500 cursor-pointer font-light'><Link href="https://github.com/TsienJin/teamHotelTriviaGo"><a>GitHub Repo</a></Link></p>
         </div>
     </footer>
   )
