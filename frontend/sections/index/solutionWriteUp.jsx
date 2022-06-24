@@ -63,7 +63,7 @@ function VideoDemo({props}){
 export default function SolutionWriteUp({props}) {
 
     const copyText = {
-        upload: "Upload any document through our portal. Ensure that the file uploaded is correct by looking at the file preview.",
+        upload: "Upload any PDF document through our portal. Ensure that the file uploaded is correct by looking at the file preview.",
         analyse: "We utilise machine learning and natural language processing to pick out the relavent information we need to process.",
         copy: "The analysed data is then formatted and displayed into easy to copy text fields for you.",
     }

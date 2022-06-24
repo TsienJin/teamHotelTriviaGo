@@ -77,7 +77,7 @@ export default function SectionProuct({props}){
         standard: ['Keyword analysis'],
         elite: ['Keyword analysis', 'Automatic calculations'],
         supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting'],
-        enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', '99.9% SLA uptime guarenteed'],
+        enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', 'Custom built services','99.9% SLA uptime guarenteed'],
 
     }
 
@@ -99,7 +99,7 @@ export default function SectionProuct({props}){
         <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
             <div className='flex flex-col sm:flex-row w-full gap-8 justify-center'>
                 <ProductCard tier={"Powered"} features={features.supreme} description={productDescription.supreme} buttonText={"Try it now!"} buttonLink={"/solution"}/>
-                <ProductCard tier={"Enterprise"} features={features.enterprise} description={productDescription.enterprise} buttonText={"Contact us"} buttonLink={"/"}/>
+                <ProductCard tier={"Enterprise"} features={features.enterprise} description={productDescription.enterprise} buttonText={"Experience the demo"} buttonLink={"/solution"}/>
             </div>
         </IndexSectionWrapper>
     )
