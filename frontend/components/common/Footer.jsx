@@ -10,7 +10,7 @@ export default function Footer() {
         </div>
         <div>
             <h6 className="font-semibold text-slate-700">Links</h6>
-            <p className='text-slate-500 cursor-pointer font-light'><Link href="https://github.com/TsienJin/teamHotelTriviaGo"><a>GitHub Repo</a></Link></p>
+            <p className='text-slate-500 cursor-pointer font-light'><Link href="https://github.com/TsienJin/teamHotelTriviaGo" passHref><a>GitHub Repo</a></Link></p>
         </div>
     </footer>
   )
