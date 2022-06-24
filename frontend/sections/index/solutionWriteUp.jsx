@@ -69,7 +69,7 @@ export default function SolutionWriteUp({props}) {
     }
 
   return (
-    <IndexSectionWrapper heading='How it works' subHeading='Overview of our solution' headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-900 to-blue-700'>
+    <IndexSectionWrapper heading='How it works' subHeading='Overview of our solution' headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500'>
         <div className='flex flex-col gap-4'>
             <div className='flex flex-col-reverse sm:flex-col gap-4 '>
                 <div className='flex flex-col lg:flex-row w-full gap-4'>

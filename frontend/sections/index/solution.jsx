@@ -96,7 +96,7 @@ export default function SectionProuct({props}){
     }
 
     return(
-        <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-gradient-to-tl from-blue-900 to-blue-700' headingColour='text-white'>
+        <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
             <div className='flex flex-col sm:flex-row w-full gap-8 justify-center'>
                 <ProductCard tier={"Powered"} features={features.supreme} description={productDescription.supreme} buttonText={"Try it now!"} buttonLink={"/solution"}/>
                 <ProductCard tier={"Enterprise"} features={features.enterprise} description={productDescription.enterprise} buttonText={"Contact us"} buttonLink={"/"}/>
