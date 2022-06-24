@@ -31,7 +31,7 @@ export default function Header() {
                 </a>
             </Link>
         </div>
-        <HeaderCTA text={"Demo"}/>
+        <HeaderCTA text={"Demo"} link={"/solution"}/>
     </div>
   )
 }

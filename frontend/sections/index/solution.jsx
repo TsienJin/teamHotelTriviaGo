@@ -50,7 +50,7 @@ function ProductCard({tier="", description="", features=[]}){
                 })}
             </div>
             <div className="p-6 pt-0 pb-5 bg-gray-50 rounded-b-lg w-full">
-                <ButtonProductCTA text='Try it now!'/>
+                <ButtonProductCTA text='Try it now!' link='/solution'/>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import React from 'react'
-import IndexSectionWrapper from '../components/IndexSectionWrapper'
+import IndexSectionWrapper from '../../components/IndexSectionWrapper'
 
 import {useRouter} from 'next/router'
 
@@ -37,19 +37,9 @@ function Testimony({props}){
   )
 }
 
-
-
-
-
-
-
-
-
-
-
 export default function SocialProof() {
   return (
-    <IndexSectionWrapper bgColour='bg-gray-100' heading='Testimonial' subHeading='Hear it from industry experts' headingColour='text-slate-900'>
+    <IndexSectionWrapper bgColour='bg-gray-100' heading='Hear it from industry experts' subHeading="We'd love to be part of your success story!" headingColour='text-slate-900'>
         <div className='bg-white flex flex-col sm:flex-row sm:my-24 sm:justify-center sm:items-center rounded-lg shadow-lg'>
             <ImageContainter />
             <Testimony />
