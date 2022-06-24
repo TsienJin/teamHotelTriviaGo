@@ -7,7 +7,7 @@ function HeaderCTA({text="Link Button", link="/", target="_self"}){
         <Link href={link}>
             <a>
                 <div className="
-                bg-green-600 text-white text-md text-center py-2 px-4 rounded-lg shadow shadow-green-300
+                bg-green-600 text-white text-md text-center py-2 px-4 rounded-lg shadow shadow-green-600
                 transition-all
                 hover:bg-green-500 hover:rounded
             ">
@@ -21,7 +21,7 @@ function HeaderCTA({text="Link Button", link="/", target="_self"}){
 
 export default function Header() {
   return (
-    <div className='px-6 py-4 sm:px-32 sm:py-4 sticky top-0 z-50 shadow-md bg-white w-full flex flex-row justify-between items-center'>
+    <div className='px-6 py-4 sm:px-32 sm:py-4 sticky top-0 z-50 shadow-md  w-full flex flex-row justify-between items-center bg-white backdrop-blur-xl bg-opacity-80 backdrop-contrast-125 backdrop-saturate-150'>
         <div>
             <Link href={"/"}>
                 <a>
