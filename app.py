@@ -13,9 +13,9 @@ def home():
 def generate_mda():
     # generate mda using machine learning model and return results
     if request.method == 'GET':
-        return 'GET not allowed'
+        return 'GET not allowed', 401
 
     content = request.json
     print(content)
     generate_mda_main(content["keyword"])
-    return jsonify(result='#####')
+    return jsonify(result='#####'), 200
