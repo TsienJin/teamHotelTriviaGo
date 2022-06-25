@@ -4,7 +4,7 @@ import FileUpload from '../../sections/solution/fileUpload'
 import FilePreview from '../../sections/solution/filePreview'
 import IndexSectionWrapper from '../../components/IndexSectionWrapper'
 
-export default function solutionPage() {
+export default function SolutionPage() {
 
   const [uploaded, setUploaded] = useState(false)
   const updateFileIsUploaded = () => {
