@@ -1,2 +1,6 @@
+# frontend
+./frontend/.env.local
+
+# backend
 __pycache__
 venv/
