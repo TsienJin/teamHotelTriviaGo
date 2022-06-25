@@ -23,4 +23,5 @@ To (adress problem statement), our team has....
 
 ***
 
-# Some other segment
+# References
+- [ReactJS File drag and drop](https://www.codemzy.com/blog/react-drag-drop-file-upload)
