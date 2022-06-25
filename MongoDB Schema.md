@@ -1,7 +1,8 @@
 ```
 {
-    _id: id
+    _id: BSON,
     jwt: TOKEN,
+    password: PASSWORD // use bcrypt to encrypt
     mdna: {
         fileName: [
             line1,
