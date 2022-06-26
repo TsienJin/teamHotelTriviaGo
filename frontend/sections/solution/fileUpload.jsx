@@ -184,7 +184,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             formData.append("time", Date.now())
 
             // console.log(process.env.NEXT_PUBLIC_API_URL)
-            fetch(`${process.env.NEXT_PUBLIC_API_URL}/mda/generate`,{
+            fetch(`https://triangular-meerkat-wq0v1x76in4julxybdwun383.herokudns.com/mda/generate`,{
                 method:"POST",
                 headers:{'Content-Type': 'multipart/form-data'},
                 body: formData,
