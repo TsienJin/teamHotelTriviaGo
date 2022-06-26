@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
+
 from generate_mda import generate_mda_main
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
@@ -15,7 +18,12 @@ def generate_mda():
     if request.method == 'GET':
         return 'GET not allowed', 401
 
-    content = request.json
-    print(content)
-    generate_mda_main(content["keyword"])
-    return jsonify(result='#####'), 200
+    if ('files' not in request.files):
+        return 'No files', 400
+
+    user_file = request.files['files']
+    session_token = request.form.get("sessionToken")
+    user_password = request.form.get("usrPassword")
+
+    generate_mda_main('NTU', user_file)
+    return 'files received', 200
