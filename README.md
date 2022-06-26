@@ -25,3 +25,4 @@ To (adress problem statement), our team has....
 
 # References
 - [ReactJS File drag and drop](https://www.codemzy.com/blog/react-drag-drop-file-upload)
+- [Password hashing in JS | bycryptjs](https://www.npmjs.com/package/bcryptjs)
