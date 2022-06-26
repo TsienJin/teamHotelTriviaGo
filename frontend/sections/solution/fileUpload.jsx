@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { v4 as uuidv4 } from 'uuid'
+
 import ModalWrapper from '../../modal/ModalWrapper'
 
 
@@ -80,7 +82,7 @@ function FileSubmitButton({methodSubmit=()=>{console.log('Method missing! FileSu
             <button onClick={methodClear} className='flex flex-row gap-x-1 px-4 py-2 rounded box-border bg-white border-2 border-red-600 text-red-600 transition-colors hover:bg-red-600 hover:text-white z-50'>
                 Clear files
             </button>
-            <button onClick={methodSubmit} className='flex flex-row gap-x-1 bg-green-600 text-white px-4 py-2 rounded shadow border-2 border-green-600 hover:bg-green-500 hover:border-green-500 transition-colors z-50'>
+            <button type='submit' onClick={methodSubmit} className='flex flex-row gap-x-1 bg-green-600 text-white px-4 py-2 rounded shadow border-2 border-green-600 hover:bg-green-500 hover:border-green-500 transition-colors z-50'>
                 Submit
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -90,11 +92,26 @@ function FileSubmitButton({methodSubmit=()=>{console.log('Method missing! FileSu
     )
 }
 
-function FileSubmissionContainer({fileList=[], methodSubmit=()=>{}, methodClear=()=>{}}){
+
+function FilePasswordField({methodPassword=()=>{}}){
+
+    return(
+        <div className='w-full flex flex-col gap-y-1'>
+            <label htmlFor='filePasswordField'>
+                <span className='text-slate-500 font-light'>(Optional) Password or catch phrase</span>
+            </label>
+            <input type="password" onChange={methodPassword} id='filePasswordField' className='w-full outline-1 outline-blue-400 px-3 py-2 border-2 border-slate-300 rounded' placeholder='Password'/>
+        </div>
+    )
+}
+
+
+function FileSubmissionContainer({fileList=[], methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}}){
 
     return(
         <div className='flex flex-col gap-y-6'>
             <FileNameContainer fileList={fileList} />
+            <FilePasswordField methodPassword={methodPassword}/>
             <FileSubmitButton methodSubmit={methodSubmit} methodClear={methodClear}/>
         </div>
     )
@@ -108,6 +125,8 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     const [dragActive, setDragActive] = useState(false)
     const [file, setFile] = useState([])
     const [fileArray, setFileArray] = useState([])
+    const [usrPassword, setUsrPassword] = useState('')
+    const [sessionToken, setSessionToken] = useState(uuidv4())
 
     const buttonClick = e =>{
         inputRef.current.click()
@@ -141,6 +160,10 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         console.log(file)
     }
 
+    const handlePassword = e => {
+        setUsrPassword(e.target.value)
+    }
+
     const clearFile = e => {
         e.preventDefault()
         setFile([])
@@ -154,7 +177,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             const formData = new FormData()
             const blob = new Blob(file, {type:'application/pdf'})
             formData.append("files", blob)
-            console.log(formData)
+            console.log(formData, usrPassword, sessionToken)
         } else {
             alert("No file found! Please let us know how you got this message.")
         }
@@ -166,9 +189,9 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
 
     return (
         <div className='bg-white rounded-xl w-[40rem] max-w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-16rem)] transition-all'>
-            <div className='w-full p-4 flex flex-col gap-y-4'>
+            <form action="" id="fileUploadForm" className='w-full p-4 flex flex-col gap-y-4'>
                 <div className={`${file.length?"outline-4 outline-dashed outline-slate-300":"outline-4 outline-dashed outline-slate-300"} rounded-md`}>
-                    <form action="" id="fileUploadForm" onDragEnter={e=>{handleDrag(e)}} onDrop={handleDrop} className={`w-full h-full relative`}>
+                    <div onDragEnter={e=>{handleDrag(e)}} onDrop={handleDrop} className={`w-full h-full relative`}>
                         <input onChange={handleDropChange} type={"file"} id={"fileUploader"} multiple={"true"} className="hidden" accept='application/pdf' ref={inputRef} />
                         <div htmlFor="fileUploader" className={`p-12  ${file.length?"":""}`}>
                             <div className="flex flex-col w-full justify-center items-center">
@@ -187,10 +210,10 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                             </div>
                         </div>
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>
-                    </form>
+                    </div>
                 </div>
-                { file.length?<FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} />:""}
-            </div>
+                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword}/>}
+            </form>
         </div>
     )
 }
