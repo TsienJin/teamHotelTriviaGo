@@ -184,8 +184,9 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         if(file && !isSending){
             setIsSending(true)
             const formData = new FormData()
-            const blob = new Blob(file, {type:'application/pdf'})
-            formData.append("files", blob)
+            fileArray.forEach((f) => {
+              formData.append('files', f)
+            })
             formData.append("usrPassword", usrPassword)
             formData.append("sessionToken", sessionToken)
             formData.append("time", Date.now())
