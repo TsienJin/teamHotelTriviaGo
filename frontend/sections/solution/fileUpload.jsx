@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 import { v4 as uuidv4 } from 'uuid'
+import hashPassword from '../../passwords/hash'
+import checkHashPassword from '../../passwords/checkHash'
 
 import ModalWrapper from '../../modal/ModalWrapper'
 
@@ -161,7 +163,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     }
 
     const handlePassword = e => {
-        setUsrPassword(e.target.value)
+        setUsrPassword(hashPassword(e.target.value))
     }
 
     const clearFile = e => {
@@ -173,11 +175,26 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         e.preventDefault()
 
         if(file){
-            alert(file)
+            // alert(file)
             const formData = new FormData()
             const blob = new Blob(file, {type:'application/pdf'})
             formData.append("files", blob)
-            console.log(formData, usrPassword, sessionToken)
+            formData.append("usrPassword", usrPassword)
+            formData.append("sessionToken", sessionToken)
+            formData.append("time", Date.now())
+
+            // console.log(process.env.NEXT_PUBLIC_API_URL)
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/mda/generate`,{
+                method:"POST",
+                headers:{'Content-Type': 'multipart/form-data'},
+                body: formData,
+                referrerPolicy: "unsafe-url" 
+            }).then(e=>{
+                console.log(e)
+            })
+
+
+
         } else {
             alert("No file found! Please let us know how you got this message.")
         }
