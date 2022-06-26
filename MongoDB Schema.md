@@ -1,9 +1,9 @@
 ```
 {
     _id: BSON,
-    uuid: TOKEN,
+    sessionToken: TOKEN,
     time: TIME // zulu time
-    password: PASSWORD // use bcrypt to encrypt
+    usrPassword: PASSWORD // use bcrypt to encrypt
     mdna: {
         fileName: [
             line1,
