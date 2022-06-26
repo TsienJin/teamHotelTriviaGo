@@ -15,7 +15,7 @@ function FilePreviewFrame({file={}}){
     reader.onload = r => {setFileSrc(r.target.result)}
 
     const fileURL = reader.readAsDataURL(file)
-    console.log(fileURL)
+    // console.log(fileURL)
 
     return(
         <>
@@ -184,13 +184,13 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             formData.append("time", Date.now())
 
             // console.log(process.env.NEXT_PUBLIC_API_URL)
-            fetch(`https://triangular-meerkat-wq0v1x76in4julxybdwun383.herokudns.com/mda/generate`,{
+            fetch(`/api/submit-file`,{
                 method:"POST",
                 headers:{'Content-Type': 'multipart/form-data'},
                 body: formData,
-                referrerPolicy: "unsafe-url" 
-            }).then(e=>{
-                console.log(e)
+                cache: "no-cache"
+            }).then((res)=>{
+                console.log(res.json().body)
             })
 
 
