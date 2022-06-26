@@ -195,7 +195,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
 
             // console.log(process.env.NEXT_PUBLIC_API_URL)
             // 
-            fetch(`http://127.0.0.1:5000/mda/generate`, {
+            fetch(`/api/submit-file-2`, {
               method: 'POST',
               body: formData,
               cache: 'no-cache',
