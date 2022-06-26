@@ -52,7 +52,6 @@ def find_keywork_in_pdf(keyWord, pdf, reader):
         
         # Checking if the keyword is found in a particular page
         for row in text.split('\n'):
-            print(row)
             if row.startswith(keyWord):
                 found = 1
                 
