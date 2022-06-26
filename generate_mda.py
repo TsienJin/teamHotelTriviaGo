@@ -4,10 +4,9 @@ import pdfplumber
 from datetime import date
 
 
-def read_pdf():
-    file = open("../sampleFinancialStatements/sample1.pdf", "rb")
-    pdf = pdfplumber.open(file)
-    reader = PyPDF2.PdfFileReader(file)
+def read_pdf(pdf_file):
+    pdf = pdfplumber.open(pdf_file)
+    reader = PyPDF2.PdfFileReader(pdf_file)
     numPages = reader.numPages
     print("There are {} pages in this pdf".format(numPages))
     return pdf, reader
@@ -43,6 +42,7 @@ def find_keywork_in_pdf(keyWord, pdf, reader):
 
         # Checking if the keyword is found in a particular page
         for row in text.split('\n'):
+            print(row)
             if row.startswith(keyWord):
                 found = 1
 
@@ -80,6 +80,6 @@ def find_keywork_in_pdf(keyWord, pdf, reader):
         print("Please double check the keyword to look for and try again")
 
 
-def generate_mda_main(keyword):
-    pdf, reader = read_pdf()
+def generate_mda_main(keyword, pdf_file):
+    pdf, reader = read_pdf(pdf_file)
     find_keywork_in_pdf(keyword, pdf, reader)
