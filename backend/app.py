@@ -18,12 +18,14 @@ def generate_mda():
     if request.method == 'GET':
         return 'GET not allowed', 401
 
-    if ('files' not in request.files):
-        return 'No files', 400
+    print(request.files)
+    print(request.form)
+    # if ('files' not in request.files):
+    #     return 'No files', 400
 
-    user_file = request.files['files']
-    session_token = request.form.get("sessionToken")
-    user_password = request.form.get("usrPassword")
+    # user_file = request.files['files']
+    # session_token = request.form.get("sessionToken")
+    # user_password = request.form.get("usrPassword")
 
-    generate_mda_main('NTU', user_file)
-    return 'files received', 200
+    # generate_mda_main('NTU', user_file)
+    return jsonify({"message": 'files received'}), 200

@@ -194,19 +194,23 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             console.log(formData.getAll('files'))
 
             // console.log(process.env.NEXT_PUBLIC_API_URL)
-            fetch(`/api/submit-file`,{
-                method:"POST",
-                headers:{'Content-Type': 'multipart/form-data'},
-                body: formData,
-                cache: "no-cache"
-            }).then((res)=>{
-                if(res.status >= 200 && res.status < 300 && sessionToken.length){
-                    router.push(`/result/${sessionToken}`)
-                } else {
-                    alert('Error submitting file. Press "OK" to reload the page.')
-                    router.reload()
-                }
-            })
+            // 
+            fetch(`http://127.0.0.1:5000/mda/generate`, {
+              method: 'POST',
+              body: formData,
+              cache: 'no-cache',
+            }).then((res) => {
+              if (
+                res.status >= 200 &&
+                res.status < 300 &&
+                sessionToken.length
+              ) {
+                router.push(`/result/${sessionToken}`);
+              } else {
+                alert('Error submitting file. Press "OK" to reload the page.');
+                router.reload();
+              }
+            });
         } else {
             alert("No file found! Please let us know how you got this message.")
         }
