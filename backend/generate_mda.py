@@ -4,10 +4,9 @@ import pdfplumber
 from datetime import date
 
 
-def read_pdf():
-    file = open("../sampleFinancialStatements/sample1.pdf", "rb")
-    pdf = pdfplumber.open(file)
-    reader = PyPDF2.PdfFileReader(file)
+def read_pdf(pdf_file):
+    pdf = pdfplumber.open(pdf_file)
+    reader = PyPDF2.PdfFileReader(pdf_file)
     numPages = reader.numPages
     print("There are {} pages in this pdf".format(numPages))
     return pdf, reader
@@ -172,6 +171,6 @@ def find_keywork_in_pdf(keyWord, pdf, reader):
     # print("found = {}, sameMonth = {}, sameYear = {}, rightNew = {}".format(found, sameMonth, sameYear, rightNew))
 
 
-def generate_mda_main(keyword):
-    pdf, reader = read_pdf()
+def generate_mda_main(keyword, pdf_file):
+    pdf, reader = read_pdf(pdf_file)
     find_keywork_in_pdf(keyword, pdf, reader)
