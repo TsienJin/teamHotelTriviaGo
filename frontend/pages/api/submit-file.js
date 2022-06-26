@@ -7,13 +7,15 @@ export default async function handler(req, res) {
 
     // console.log(req.body)
 
-    const resAPI = await fetch('http://api.teamhotel.dev/mda/generate', {
-        method: "POST",
-        headers:{'Content-Type': 'multipart/form-data'},
-        body: req.body
-    })
-    console.log(await resAPI.json())
+    // const resAPI = await fetch(process.env.API_URL_FILEUPLOAD, {
+    //     method: "POST",
+    //     headers:{'Content-Type': 'multipart/form-data'},
+    //     body: req.body
+    // })
+    // console.log(await resAPI.json())
 
-    res.status(200).send(await resAPI.json())
+    // res.status(200).send(await resAPI.json())
+
+    res.status(200).send({message: 'OK'})
   }
   
