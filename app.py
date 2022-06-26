@@ -21,9 +21,12 @@ def generate_mda():
     # generate mda using machine learning model and return results
     if request.method == 'GET':
         return 'GET not allowed', 401
-
+    print(request)
+    print(request.headers)
     print(request.files)
     print(request.form)
+    print(request.data)
+    print(request.json)
     # if ('files' not in request.files):
     #     return 'No files', 400
 
