@@ -174,5 +174,3 @@ def find_keywork_in_pdf(keyWord, pdf, reader):
 def generate_mda_main(keyword, pdf_file):
     pdf, reader = read_pdf(pdf_file)
     find_keywork_in_pdf(keyword, pdf, reader)
-
-    
