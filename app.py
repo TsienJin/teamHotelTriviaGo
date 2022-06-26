@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 from generate_mda import generate_mda_main
+from database.test import connect_db, connect_collection, insert_item
 
 app = Flask(__name__)
 CORS(app)
@@ -9,6 +10,9 @@ CORS(app)
 
 @app.route('/')
 def home():
+    db = connect_db()
+    mdna_collection = connect_collection(db)
+    insert_item(mdna_collection, {"message": 'hello'})
     return 'Team Hotel Trivia Go Backend'
 
 
