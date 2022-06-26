@@ -1,5 +1,9 @@
-import HttpStatus from 'http-status-codes'
+import HttpStatus from 'http-status-codes';
 import nextConnect from 'next-connect';
+import axios from 'axios';
+import FormData from 'form-data';
+
+import { Blob } from 'buffer';
 
 import middleware from '../../middleware/middleware';
 
@@ -7,41 +11,47 @@ const handler = nextConnect();
 
 handler.use(middleware);
 
-handler.post(async(req, res) => {
-	try {
-		const files = req.files
-		const body = req.body
+handler.post(async (req, res) => {
+  try {
+    const files = req.files;
+    const body = req.body;
 
-		// do stuff with files and body
-        // console.log(files, body)
+    // do stuff with files and body
+    // console.log(files, body)
 
-        // const formToSend = new FormData()
-        // // formToSend.append('files', files)
-        // formToSend.append('body', body)
+    const formToSend = new FormData();
+    // const newFile = new Blob(Buffer.from(files), {
+    //   type: 'application/pdf',
+    // });
+    formToSend.append('files', files.files);
+    formToSend.append('usrPassword', body.usrPassword);
+    formToSend.append('sessionToken', body.sessionToken);
 
-        const result = await fetch("http://api.teamhotel.dev/mda/generate", {
-            method: "POST",
-            headers:{
-                'Content-Type': 'multipart/form-data'
-            },
-            body: body,
-            files: files,
-        })
+    const result = await axios.post(
+      'http://127.0.0.1:5000/mda/generate',
+      formToSend,
+      {
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
+        // body: JSON.stringify(body),
+      }
+    );
 
-        console.log(await result)
+    // console.log(await result);
 
-
-		res.status(HttpStatus.OK).json({});
-	} catch (err) {
-        console.log(err)
-		res.status(HttpStatus.BAD_REQUEST).json({error: err.message});
-	}
+    res.status(HttpStatus.OK).json({});
+  } catch (err) {
+    console.log(err);
+    res.status(HttpStatus.BAD_REQUEST).json({ error: err.message });
+  }
 });
 
 export const config = {
   api: {
     bodyParser: false,
   },
-}
+};
 
 export default handler;
