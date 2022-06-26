@@ -5,6 +5,7 @@ import hashPassword from '../../passwords/hash'
 import checkHashPassword from '../../passwords/checkHash'
 
 import ModalWrapper from '../../modal/ModalWrapper'
+import { useRouter } from 'next/router'
 
 
 function FilePreviewFrame({file={}}){
@@ -77,18 +78,20 @@ function FileNameContainer({fileList=[]}){
     )
 }
 
-function FileSubmitButton({methodSubmit=()=>{console.log('Method missing! FileSubmitButton')}, methodClear=()=>{console.log('Method missing! FileSubmitButtonClear')}}){
+function FileSubmitButton({isSending=false, methodSubmit=()=>{console.log('Method missing! FileSubmitButton')}, methodClear=()=>{console.log('Method missing! FileSubmitButtonClear')}}){
 
     return(
         <div className='w-full flex flex-row justify-end items-center gap-x-2'>
             <button onClick={methodClear} className='flex flex-row gap-x-1 px-4 py-2 rounded box-border bg-white border-2 border-red-600 text-red-600 transition-colors hover:bg-red-600 hover:text-white z-50'>
                 Clear files
             </button>
-            <button type='submit' onClick={methodSubmit} className='flex flex-row gap-x-1 bg-green-600 text-white px-4 py-2 rounded shadow border-2 border-green-600 hover:bg-green-500 hover:border-green-500 transition-colors z-50'>
-                Submit
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+            <button type='submit' onClick={methodSubmit} className='z-50'>
+                <div className={`flex flex-row gap-x-1 bg-green-600 text-white px-4 py-2 rounded shadow border-2 border-green-600 hover:bg-green-500 hover:border-green-500 transition-colors ${isSending?"cursor-progress bg-slate-600 border-slate-600 hover:bg-slate-600 hover:border-slate-600":""}`}>
+                    {isSending?<span>Sending...</span>:<span>Submit</span>}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
             </button>
         </div>
     )
@@ -108,13 +111,13 @@ function FilePasswordField({methodPassword=()=>{}}){
 }
 
 
-function FileSubmissionContainer({fileList=[], methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}}){
+function FileSubmissionContainer({fileList=[], isSending=false, methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}}){
 
     return(
         <div className='flex flex-col gap-y-6'>
             <FileNameContainer fileList={fileList} />
             <FilePasswordField methodPassword={methodPassword}/>
-            <FileSubmitButton methodSubmit={methodSubmit} methodClear={methodClear}/>
+            <FileSubmitButton methodSubmit={methodSubmit} methodClear={methodClear} isSending={isSending} />
         </div>
     )
 }
@@ -124,7 +127,11 @@ function FileSubmissionContainer({fileList=[], methodSubmit=()=>{}, methodClear=
 export default function FileUpload({method=()=>{console.log('Method missing! FileUpload!')}}) {
 
     const inputRef = useRef(null)
+    const router = useRouter()
+
     const [dragActive, setDragActive] = useState(false)
+    const [isSending, setIsSending] = useState(false)
+
     const [file, setFile] = useState([])
     const [fileArray, setFileArray] = useState([])
     const [usrPassword, setUsrPassword] = useState('')
@@ -174,8 +181,8 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     const submitFile = e => {
         e.preventDefault()
 
-        if(file){
-            // alert(file)
+        if(file && !isSending){
+            setIsSending(true)
             const formData = new FormData()
             const blob = new Blob(file, {type:'application/pdf'})
             formData.append("files", blob)
@@ -190,11 +197,13 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                 body: formData,
                 cache: "no-cache"
             }).then((res)=>{
-                console.log(res.json().body)
+                if(res.status >= 200 && res.status < 300 && sessionToken.length){
+                    router.push(`/result/${sessionToken}`)
+                } else {
+                    alert('Error submitting file. Click "OK" to reload page.')
+                    router.push('/solution')
+                }
             })
-
-
-
         } else {
             alert("No file found! Please let us know how you got this message.")
         }
@@ -229,7 +238,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>
                     </div>
                 </div>
-                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword}/>}
+                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword} isSending={isSending} />}
             </form>
         </div>
     )
