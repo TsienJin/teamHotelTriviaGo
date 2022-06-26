@@ -191,6 +191,8 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             formData.append("sessionToken", sessionToken)
             formData.append("time", Date.now())
 
+            console.log(formData.getAll('files'))
+
             // console.log(process.env.NEXT_PUBLIC_API_URL)
             fetch(`/api/submit-file`,{
                 method:"POST",
@@ -201,8 +203,8 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                 if(res.status >= 200 && res.status < 300 && sessionToken.length){
                     router.push(`/result/${sessionToken}`)
                 } else {
-                    alert('Error submitting file. Click "OK" to reload page.')
-                    router.push('/solution')
+                    alert('Error submitting file. Press "OK" to reload the page.')
+                    router.reload()
                 }
             })
         } else {
