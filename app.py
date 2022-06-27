@@ -10,9 +10,9 @@ CORS(app)
 
 @app.route('/')
 def home():
-    db = connect_db()
-    mdna_collection = connect_collection(db)
-    insert_item(mdna_collection, {"message": 'hello'})
+    # db = connect_db()
+    # mdna_collection = connect_collection(db)
+    # insert_item(mdna_collection, {"message": 'hello'})
     return 'Team Hotel Trivia Go Backend'
 
 
@@ -21,18 +21,24 @@ def generate_mda():
     # generate mda using machine learning model and return results
     if request.method == 'GET':
         return 'GET not allowed', 401
-    print(request)
-    print(request.headers)
-    print(request.files)
-    print(request.form)
-    print(request.data)
-    print(request.json)
-    # if ('files' not in request.files):
-    #     return 'No files', 400
+    if request.method == 'POST':
+        if ('files' not in request.files):
+            return jsonify({"message": 'No files'}), 400
 
-    # user_file = request.files['files']
-    # session_token = request.form.get("sessionToken")
-    # user_password = request.form.get("usrPassword")
+        user_file = request.files['files']
+        session_token = request.form.get("sessionToken")
+        user_password = request.form.get("usrPassword")
+        time = request.form.get("time")
 
-    # generate_mda_main('NTU', user_file)
-    return jsonify({"message": 'files received'}), 200
+        print('user_file:', user_file)
+        print('session token:', session_token)
+        print('user_password:', user_password)
+        print('time:', time)
+
+        # generate_mda_main('NTU', user_file)
+        return jsonify({
+            "message": 'files received',
+            "sessionToken": session_token,
+            "user_password": user_password,
+            "time": time
+        }), 200
