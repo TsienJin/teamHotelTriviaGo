@@ -17,19 +17,20 @@ handler.post(async (req, res) => {
     const files = req.files;
     const body = req.body;
 
-
-    // do stuff with files and body
     // console.log(files, body)
 
     const formToSend = new FormData();
-    // // const newFile = new Blob(Buffer.from(files), {
-    // //   type: 'application/pdf',
-    // // });
-    // formToSend.append('files', files.files);
     formToSend.append('usrPassword', body.usrPassword)
     formToSend.append('sessionToken', body.sessionToken)
-    files.files.forEach(item=>{formToSend.append('files', fs.createReadStream(item.filepath), item.originalFilename)})
-    // files.files.forEach(item=>{console.log(item.filepath)})
+    formToSend.append('time', body.time)
+    
+    if(files.files.length){
+      files.files.forEach(item=>{formToSend.append('files', fs.createReadStream(item.filepath), item.originalFilename)})
+    } else {
+      formToSend.append('files', fs.createReadStream(files.files.filepath), files.files.originalFilename)
+    }
+
+    console.log(files)
     
 
 
@@ -40,18 +41,19 @@ handler.post(async (req, res) => {
 
 
     const result = await axios.post(
-      'http://api.teamhotel.dev/mda/generate',
+      // 'http://api.teamhotel.dev/mda/generate',
+      // 'http://127.0.0.1:5000/mda/generate',
+      process.env.API_URL_FILEUPLOAD,
       formToSend,
     {
       headers: {
         // 'Content-Type': 'application/json',
         'Content-Type': 'multipart/form-data',
       },
-      // body: JSON.stringify(body),
     }
     );
 
-    console.log(await result.json());
+    console.log(await result.data);
 
     res.status(HttpStatus.OK).json({});
   } catch (err) {
