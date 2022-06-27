@@ -55,7 +55,7 @@ handler.post(async (req, res) => {
 
     console.log(await result.data);
 
-    res.status(HttpStatus.OK).json({});
+    res.status(HttpStatus.OK).json({message: 'files sent'});
   } catch (err) {
     console.log(err);
     res.status(HttpStatus.BAD_REQUEST).json({ error: err.message });
