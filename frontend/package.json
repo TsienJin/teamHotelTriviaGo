@@ -15,6 +15,7 @@
     "formidable": "^2.0.1",
     "fs": "^0.0.1-security",
     "http-status-codes": "^2.2.0",
+    "mongodb": "^4.7.0",
     "multiparty": "^4.2.3",
     "next": "12.1.6",
     "next-connect": "^0.12.2",
