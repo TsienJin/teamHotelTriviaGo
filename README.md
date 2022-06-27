@@ -26,3 +26,5 @@ To (adress problem statement), our team has....
 # References
 - [ReactJS File drag and drop](https://www.codemzy.com/blog/react-drag-drop-file-upload)
 - [Password hashing in JS | bycryptjs](https://www.npmjs.com/package/bcryptjs)
+- [Handling multipart-form data on Next.js backend | formidable](https://chadalen.com/blog/how-to-use-a-multipart-form-in-nextjs-using-api-routes)
+- [Formidable docs](https://www.npmjs.com/package/formidable)
