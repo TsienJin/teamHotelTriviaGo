@@ -28,3 +28,4 @@ To (adress problem statement), our team has....
 - [Password hashing in JS | bycryptjs](https://www.npmjs.com/package/bcryptjs)
 - [Handling multipart-form data on Next.js backend | formidable](https://chadalen.com/blog/how-to-use-a-multipart-form-in-nextjs-using-api-routes)
 - [Formidable docs](https://www.npmjs.com/package/formidable)
+- [React v18 ```useEffect()``` being called twice -- work around](https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646)
