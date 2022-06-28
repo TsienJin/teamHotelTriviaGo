@@ -211,8 +211,6 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                 router.reload();
               }
             });
-        } else {
-            alert("No file found! Please let us know how you got this message.")
         }
     }
 
