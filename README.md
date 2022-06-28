@@ -18,6 +18,7 @@ To (adress problem statement), our team has....
 
 # Technology Stack
 - [Next.js](https://nextjs.org) hosted on [Vercel](https://vercel.com/)
+- [Flask](https://flask.palletsprojects.com/en/2.1.x/) backend for PDF analysis hosted on [Heroku](https://www.heroku.com)
 - [MongoDb](https://www.mongodb.com) hosted on [MongoDB Atlas Database](https://www.mongodb.com/atlas/database)
 
 
