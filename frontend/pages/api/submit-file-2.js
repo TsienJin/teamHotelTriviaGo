@@ -17,8 +17,6 @@ handler.post(async (req, res) => {
     const files = req.files;
     const body = req.body;
 
-    // console.log(files, body)
-
     const formToSend = new FormData();
     formToSend.append('usrPassword', body.usrPassword)
     formToSend.append('sessionToken', body.sessionToken)
@@ -30,24 +28,11 @@ handler.post(async (req, res) => {
       formToSend.append('files', fs.createReadStream(files.files.filepath), files.files.originalFilename)
     }
 
-    console.log(files)
-    
-
-
-    // const fileArray = Array.from(files.files)
-    // console.log(fileArray)
-    // formToSend.append('files', req.files)
-
-
-
     const result = await axios.post(
-      // 'http://api.teamhotel.dev/mda/generate',
-      // 'http://127.0.0.1:5000/mda/generate',
       process.env.API_URL_FILEUPLOAD,
       formToSend,
     {
       headers: {
-        // 'Content-Type': 'application/json',
         'Content-Type': 'multipart/form-data',
       },
     }

@@ -6,8 +6,6 @@ import {useRouter} from 'next/router'
 
 function ImageContainter({props}){
 
-  // <a href="https://unsplash.com/photos/pAtA8xe_iVM" target={"_blank"} rel="noopener noreferrer">
-
   const router = useRouter()
   const handleClick = e => {
     e.preventDefault()
