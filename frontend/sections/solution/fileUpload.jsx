@@ -110,13 +110,25 @@ function FilePasswordField({methodPassword=()=>{}}){
     )
 }
 
+function FileKeywordField({methodKeyword=()=>{}}){
 
-function FileSubmissionContainer({fileList=[], isSending=false, methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}}){
+    return(
+        <div className='w-full flex flex-col gap-y-1'>
+            <label htmlFor='fileKeywordField'>
+                <span className='text-slate-500 font-light'>(Optional) Keywords seperated by commas</span>
+            </label>
+            <input type="text" onChange={methodKeyword} id='fileKeywordField' className='w-full outline-1 outline-blue-400 px-3 py-2 border-2 border-slate-300 rounded' placeholder='Keywords'/>
+        </div>
+    )
+}
+
+function FileSubmissionContainer({fileList=[], isSending=false, methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}, methodKeyword=()=>{}}){
 
     return(
         <div className='flex flex-col gap-y-6'>
             <FileNameContainer fileList={fileList} />
             <FilePasswordField methodPassword={methodPassword}/>
+            <FileKeywordField methodKeyword={methodKeyword} />
             <FileSubmitButton methodSubmit={methodSubmit} methodClear={methodClear} isSending={isSending} />
         </div>
     )
@@ -136,6 +148,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     const [fileArray, setFileArray] = useState([])
     const [usrPassword, setUsrPassword] = useState('')
     const [sessionToken, setSessionToken] = useState(uuidv4())
+    const [usrKeyword, setUsrKeyword] = useState('')
 
     const buttonClick = e =>{
         inputRef.current.click()
@@ -173,6 +186,10 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         setUsrPassword(hashPassword(e.target.value))
     }
 
+    const handleKeyword = e => {
+        setUsrKeyword(e.target.value)
+    }
+
     const clearFile = e => {
         e.preventDefault()
         setFile([])
@@ -189,12 +206,9 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             })
             formData.append("usrPassword", usrPassword)
             formData.append("sessionToken", sessionToken)
+            formData.append("usrKeyword", usrKeyword)
             formData.append("time", Date.now())
 
-            console.log(formData.getAll('files'))
-
-            // console.log(process.env.NEXT_PUBLIC_API_URL)
-            // 
             fetch(`/api/solution/submit-file-2`, {
               method: 'POST',
               body: formData,
@@ -243,7 +257,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>
                     </div>
                 </div>
-                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword} isSending={isSending} />}
+                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword} methodKeyword={handleKeyword} isSending={isSending} />}
             </form>
         </div>
     )
