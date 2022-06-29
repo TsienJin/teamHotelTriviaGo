@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
   try {
     await client.connect()
-    const dbCur = client.db("HotelTriviaGodb").collection("mdna_test").find({},{projection:{_id:0, usrPassword:0}}).sort({_id:-1}).limit(20)
+    const dbCur = client.db("HotelTriviaGodb").collection("mdna_test").find({},{projection:{_id:0, usrPassword:0}}).sort({_id:-1}).limit(10)
     await dbCur.forEach(item=>{
       result.push(item)
     })
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     console.log(err)
     isError = true
   } finally {
-    console.log(result)
+    // console.log(result)
     await client.close()
   }
 
