@@ -207,7 +207,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             formData.append("usrPassword", usrPassword)
             formData.append("sessionToken", sessionToken)
             formData.append("usrKeyword", usrKeyword)
-            formData.append("time", Date.now())
+            formData.append("time", new Date().toLocaleString("en-SG", {timeZone: "Asia/Singapore"}),)
 
             fetch(`/api/solution/submit-file-2`, {
               method: 'POST',

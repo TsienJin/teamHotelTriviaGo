@@ -4,21 +4,58 @@ import axios from 'axios';
 import FormData from 'form-data';
 import fs from 'fs'
 
-import { Blob } from 'buffer';
+const { MongoClient } = require("mongodb")
 
 import middleware from '../../../middleware/middleware';
-
 const handler = nextConnect();
-
 handler.use(middleware);
 
+
+
+async function writeToMongo(body){
+
+  const mongoDataToInsert = {
+    isComplete: false,
+    isError: false,
+    sessionToken: body.sessionToken,
+    usrPassword: body.usrPassword,
+    usrKeyword: body.usrKeyword,
+    time: body.time,
+    mdna: {}
+  }
+
+  const client = new MongoClient(process.env.MONGO_URI)
+  
+  try {
+    await client.connect()
+    await client.db("HotelTriviaGodb").collection("mdna_test").insertOne(mongoDataToInsert).then(e=>{console.log(e)})
+  } catch (err) {
+    console.log(err)
+  } finally {
+    await client.close()
+  }
+
+  return
+}
+
+
+
+
+
 handler.post(async (req, res) => {
+
+  var resCode = 200
+  var resMessage = "file received"
+
   try {
     const files = req.files;
     const body = req.body;
 
+    writeToMongo(body)
+
     const formToSend = new FormData();
     formToSend.append('usrPassword', body.usrPassword)
+    formToSend.append('usrKeyword', body.usrKeyword)
     formToSend.append('sessionToken', body.sessionToken)
     formToSend.append('time', body.time)
     
@@ -28,22 +65,15 @@ handler.post(async (req, res) => {
       formToSend.append('files', fs.createReadStream(files.files.filepath), files.files.originalFilename)
     }
 
-    const result = await axios.post(
-      process.env.API_URL_FILEUPLOAD,
-      formToSend,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    }
-    );
+    const result = await axios.post( process.env.API_URL_FILEUPLOAD, formToSend, {headers:{'Content-Type':'multipart/form-data',},})
 
-    console.log(await result.data);
-
-    res.status(HttpStatus.OK).json({message: 'files sent'});
   } catch (err) {
-    console.log(err);
-    res.status(HttpStatus.BAD_REQUEST).json({ error: err.message });
+    console.log(err)
+    resCode = 500
+    resMessage = "Error occured"
+  } finally {
+    console.log("here")
+    res.status(resCode).json({message: resMessage})
   }
 });
 
