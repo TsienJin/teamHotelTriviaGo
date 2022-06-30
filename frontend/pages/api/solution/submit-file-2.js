@@ -65,7 +65,11 @@ handler.post(async (req, res) => {
       formToSend.append('files', fs.createReadStream(files.files.filepath), files.files.originalFilename)
     }
 
-    const result = await axios.post( process.env.API_URL_FILEUPLOAD, formToSend, {headers:{'Content-Type':'multipart/form-data',},})
+    const result = await axios.post(
+      'http://127.0.0.1:5000/mda/generate',
+      formToSend,
+      { headers: { 'Content-Type': 'multipart/form-data' } }
+    );
 
   } catch (err) {
     console.log(err)
