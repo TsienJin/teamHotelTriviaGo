@@ -20,7 +20,7 @@ function FilePreviewFrame({file={}}){
 
     return(
         <>
-            <div className='bg-white w-full rounded-t-lg flex flex-row justify-between items-center overflow-hidden'>
+            <div className='bg-white w-full rounded-t-lg flex flex-row justify-between items-center overflow-hidden z-100 '>
                 <div className='py-2 px-3 '>
                     <span className='text-slate-500'>{file.name}</span>
                 </div>
@@ -85,7 +85,7 @@ function FileSubmitButton({isSending=false, methodSubmit=()=>{console.log('Metho
             <button onClick={methodClear} className='flex flex-row gap-x-1 px-4 py-2 rounded box-border bg-white border-2 border-red-600 text-red-600 transition-colors hover:bg-red-600 hover:text-white z-50'>
                 Clear files
             </button>
-            <button type='submit' onClick={methodSubmit} className='z-50'>
+            <button type='submit' onClick={methodSubmit} className='z-0'>
                 <div className={`flex flex-row gap-x-1 bg-green-600 text-white px-4 py-2 rounded shadow border-2 border-green-600 hover:bg-green-500 hover:border-green-500 transition-colors ${isSending?"cursor-progress bg-slate-600 border-slate-600 hover:bg-slate-600 hover:border-slate-600":""}`}>
                     {isSending?<span>Sending...</span>:<span>Submit</span>}
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -110,13 +110,25 @@ function FilePasswordField({methodPassword=()=>{}}){
     )
 }
 
-
-function FileSubmissionContainer({fileList=[], isSending=false, methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}}){
+function FileKeywordField({methodKeyword=()=>{}}){
 
     return(
-        <div className='flex flex-col gap-y-6'>
+        <div className='w-full flex flex-col gap-y-1'>
+            <label htmlFor='fileKeywordField'>
+                <span className='text-slate-500 font-light'>(Optional) Keywords seperated by commas</span>
+            </label>
+            <input type="text" onChange={methodKeyword} id='fileKeywordField' className='w-full outline-1 outline-blue-400 px-3 py-2 border-2 border-slate-300 rounded' placeholder='Keywords'/>
+        </div>
+    )
+}
+
+function FileSubmissionContainer({fileList=[], isSending=false, methodSubmit=()=>{}, methodClear=()=>{}, methodPassword=()=>{}, methodKeyword=()=>{}}){
+
+    return(
+        <div className='flex flex-col gap-y-6 z-0'>
             <FileNameContainer fileList={fileList} />
             <FilePasswordField methodPassword={methodPassword}/>
+            <FileKeywordField methodKeyword={methodKeyword} />
             <FileSubmitButton methodSubmit={methodSubmit} methodClear={methodClear} isSending={isSending} />
         </div>
     )
@@ -136,6 +148,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     const [fileArray, setFileArray] = useState([])
     const [usrPassword, setUsrPassword] = useState('')
     const [sessionToken, setSessionToken] = useState(uuidv4())
+    const [usrKeyword, setUsrKeyword] = useState('')
 
     const buttonClick = e =>{
         inputRef.current.click()
@@ -173,6 +186,10 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         setUsrPassword(hashPassword(e.target.value))
     }
 
+    const handleKeyword = e => {
+        setUsrKeyword(e.target.value)
+    }
+
     const clearFile = e => {
         e.preventDefault()
         setFile([])
@@ -189,13 +206,10 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
             })
             formData.append("usrPassword", usrPassword)
             formData.append("sessionToken", sessionToken)
-            formData.append("time", Date.now())
+            formData.append("usrKeyword", usrKeyword)
+            formData.append("time", new Date().toLocaleString("en-SG", {timeZone: "Asia/Singapore"}),)
 
-            console.log(formData.getAll('files'))
-
-            // console.log(process.env.NEXT_PUBLIC_API_URL)
-            // 
-            fetch(`/api/submit-file-2`, {
+            fetch(`/api/solution/submit-file-2`, {
               method: 'POST',
               body: formData,
               cache: 'no-cache',
@@ -211,8 +225,6 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                 router.reload();
               }
             });
-        } else {
-            alert("No file found! Please let us know how you got this message.")
         }
     }
 
@@ -239,13 +251,13 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                                 </div>
                             </div>
                             <div className='w-full flex flex-col justify-center items-center mt-3'>
-                                <button className={`bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500 transition-colors z-50 ${file.length?"bg-white text-green-600 border-2 border-green-600 hover:border-green-500 hover:text-white":""}`} onClick={buttonClick}>Choose a file</button>
+                                <button className={`bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500 transition-colors z-0 ${file.length?"bg-white text-green-600 border-2 border-green-600 hover:border-green-500 hover:text-white":""}`} onClick={buttonClick}>Choose a file</button>
                             </div>
                         </div>
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>
                     </div>
                 </div>
-                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword} isSending={isSending} />}
+                { file.length>0 && <FileSubmissionContainer fileList={fileArray} methodSubmit={submitFile} methodClear={clearFile} methodPassword={handlePassword} methodKeyword={handleKeyword} isSending={isSending} />}
             </form>
         </div>
     )

@@ -18,6 +18,7 @@ To (adress problem statement), our team has....
 
 # Technology Stack
 - [Next.js](https://nextjs.org) hosted on [Vercel](https://vercel.com/)
+- [Flask](https://flask.palletsprojects.com/en/2.1.x/) backend for PDF analysis hosted on [Heroku](https://www.heroku.com)
 - [MongoDb](https://www.mongodb.com) hosted on [MongoDB Atlas Database](https://www.mongodb.com/atlas/database)
 
 
@@ -28,3 +29,4 @@ To (adress problem statement), our team has....
 - [Password hashing in JS | bycryptjs](https://www.npmjs.com/package/bcryptjs)
 - [Handling multipart-form data on Next.js backend | formidable](https://chadalen.com/blog/how-to-use-a-multipart-form-in-nextjs-using-api-routes)
 - [Formidable docs](https://www.npmjs.com/package/formidable)
+- [React v18 ```useEffect()``` being called twice -- work around](https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646)

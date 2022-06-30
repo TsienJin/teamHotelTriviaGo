@@ -2,7 +2,7 @@
 {
     _id: BSON,
     sessionToken: TOKEN,
-    time: TIME // zulu time
+    time: TIME // string
     usrPassword: PASSWORD // use bcrypt to encrypt
     mdna: {
         fileName: [

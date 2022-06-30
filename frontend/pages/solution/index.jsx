@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+
+// const { MongoClient } = require("mongodb")
 
 import FileUpload from '../../sections/solution/fileUpload'
 import FilePreview from '../../sections/solution/filePreview'
 import IndexSectionWrapper from '../../components/IndexSectionWrapper'
+import FileHistory from '../../sections/solution/fileHistory'
 
-export default function SolutionPage() {
+// import cacheReq from './cacheRequest/cacheReq'
 
-  const [uploaded, setUploaded] = useState(false)
-  const updateFileIsUploaded = () => {
-    setUploaded(true)
-  }
-  const updateFileIsCleared = () => {
-    setUploaded(false)
-  }
+export default function SolutionPage({}) {
+
+  const [fileHistory, setFileHistory] = useState([])
+  
+  useEffect(()=>{
+    axios.get('/api/solution/file-history',{}).then(res=>{setFileHistory(res.data.data)})
+    // setFileHistory(cacheReq('/api/solution/file-history',{}))
+  },[])
+
 
   return (
-    <IndexSectionWrapper heading='Upload your PDF files' subHeading='Do not upload any sensitive or privalaged information as this is a proof of concept' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
-      <div className='w-full flex flex-col justify-center items-center'>
-        {uploaded?<FilePreview method={updateFileIsCleared}/>:<FileUpload method={updateFileIsUploaded}/>}
-      </div>
-    </IndexSectionWrapper>
+    <>
+      <IndexSectionWrapper heading='Upload your PDF files' subHeading='Do not upload any sensitive or privalaged information as this is a proof of concept' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
+        <FileUpload />
+      </IndexSectionWrapper>
+      <IndexSectionWrapper bgColour={`bg-slate-50 ${fileHistory==0?"cursor-progress":""}`} heading='' subHeading={fileHistory.length>0?`Previous file analysis, showing the latest ${fileHistory.length} jobs`:"Loading history..."} >
+        <FileHistory fileHistory={fileHistory}/>
+      </IndexSectionWrapper>
+    </>
   )
 }
