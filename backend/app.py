@@ -3,9 +3,19 @@ from flask_cors import CORS
 
 from generate_mda import generate_mda_main
 from database.test import connect_db, connect_collection, insert_item
+from tasks import make_celery
 
 app = Flask(__name__)
+app.config.update(CELERY_BROKER_URL='redis://localhost:6379',
+                  CELERY_RESULT_BACKEND='redis://localhost:6379')
 CORS(app)
+celery = make_celery(app)
+
+
+@celery.task()
+def cal_results(user_keyword, user_file):
+    res = generate_mda_main(user_keyword, user_file)
+    print(res)
 
 
 @app.route('/')
@@ -37,7 +47,8 @@ def generate_mda():
         print('user_keyword:', user_keyword)
         print('time:', time)
 
-        # generate_mda_main(user_keyword, user_file)
+        res = cal_results(user_keyword, user_file)
+
         return jsonify({
             "message": 'files received',
             "sessionToken": session_token,
