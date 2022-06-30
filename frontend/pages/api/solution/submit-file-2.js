@@ -4,7 +4,7 @@ import axios from 'axios';
 import FormData from 'form-data';
 import fs from 'fs'
 
-const { MongoClient } = require("mongodb")
+import { MongoClient } from "mongodb"
 
 import middleware from '../../../middleware/middleware';
 const handler = nextConnect();
