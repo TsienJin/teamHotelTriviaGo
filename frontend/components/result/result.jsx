@@ -45,7 +45,7 @@ function FileTextField({statement="", index=0}){
 }
 
 
-function FileWrapper({fileName="", statements=[]}){
+function FileWrapper({fileName="", statements=[], index=0}){
 
   const [isExpand, setIsExpand] = useState(true)
 
@@ -54,7 +54,7 @@ function FileWrapper({fileName="", statements=[]}){
   }
 
   return(
-    <div className='w-full max-w-prose bg-white rounded-lg  overflow-hidden'>
+    <div key={100+index} className='w-full max-w-prose bg-white rounded-lg  overflow-hidden'>
       <div className='topBar flex flex-row gap-2 justify-start items-center p-2'>
         <span onClick={handleExpand} className={`cursor-pointer transition-all opacity-30 sm:hover:opacity-70 ${isExpand?"rotate-90 sm:opacity-70":""}`}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -83,10 +83,10 @@ function FileWrapper({fileName="", statements=[]}){
 function ResultResultResult({data={}}){
   return(
       <>
-    {Object.keys(data).map(name=>{
+    {Object.keys(data).map((name, index)=>{
       // console.log(data[name])
       return(
-        <FileWrapper fileName={name} statements={data[name]} />
+        <FileWrapper fileName={name} statements={data[name]} index={index} />
       )
     })}
       </>
