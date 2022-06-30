@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 from pymongo import MongoClient
 
 
@@ -16,6 +15,3 @@ def connect_collection(db):
 def insert_item(mdna_collection, item):
     temp = mdna_collection.insert_one(item)
     print(temp)
-=======
-import pymongo
->>>>>>> Stashed changes
