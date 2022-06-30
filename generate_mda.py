@@ -144,7 +144,7 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
 
                             # To get the currency / units
                             if word in possibleUnits:
-                                print("TRIGGERED!!!!")
+                                # print("TRIGGERED!!!!")
                                 unitMultiplyString = "1" + word.replace("'", '')
                                 unitMultiplyString = unitMultiplyString.replace("’", '')
                                 unitMultiply = int(unitMultiplyString.replace('$',''))
@@ -250,52 +250,52 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                     # [] means need to fill in
 
                     try:
-                        print("From page {}:".format(x + 1))
+                        # print("From page {}:".format(x + 1))
 
                         # If only years, but no months are detected in headings
                         if (newYear and not newMonth):
                             if (change < 0):
-                                print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal , oldYear))
+                                # print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal , oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal , oldYear))
                                 
                             elif (change > 0):
-                                print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal, oldYear))
+                                # print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal, oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newYear, oldVal, oldYear))
                             else:
-                                print("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newYear, oldVal, oldYear))
+                                # print("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newYear, oldVal, oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newYear, oldVal, oldYear))
                             print()
 
                         # If only months, but no years are detected in headings
                         if (newMonth and not newYear):
                             if (change < 0):
-                                print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
+                                # print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
                                 dictToRT["mdna"][title].append("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
 
                             elif (change > 0):
-                                print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
+                                # print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
                                 dictToRT["mdna"][title].append("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, oldVal, oldMonth))
 
                             else:
-                                print("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, oldVal, oldMonth))
+                                # print("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, oldVal, oldMonth))
                                 dictToRT["mdna"][title].append("Our {} expenses stayed the same to S$[{:.2f}] in the [{}], from S$[{:.2f}] in the [{}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, oldVal, oldMonth))
                             print()
 
                         # If both months and years are detected in headings
                         elif (newYear and newMonth):
                             if (change < 0):
-                                print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
+                                # print("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses decreased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
 
                             elif (change > 0):
-                                print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
+                                # print("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses increased by S${:.2f} ({:.2f})% to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
 
 
                             else:
-                                print("Our {} expenses stayed the same to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
+                                # print("Our {} expenses stayed the same to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
                                 dictToRT["mdna"][title].append("Our {} expenses stayed the same to S$[{:.2f}] in the [{} {}], from S$[{:.2f}] in the [{} {}], as a result of [company to provide reason].".format(rowName, newVal, newMonth, newYear, oldVal, oldMonth, oldYear))
-                            print()
+                            # print()
 
                     except:
                         continue
