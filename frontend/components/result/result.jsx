@@ -57,8 +57,8 @@ function FileWrapper({fileName="", statements=[]}){
     <div className='w-full max-w-prose bg-white rounded-lg  overflow-hidden'>
       <div className='topBar flex flex-row gap-2 justify-start items-center p-2'>
         <span onClick={handleExpand} className={`cursor-pointer transition-all opacity-30 sm:hover:opacity-70 ${isExpand?"rotate-90 sm:opacity-70":""}`}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinejoin="round" strokeLinecap="round" d="M9 5l7 7-7 7" />
           </svg>
         </span>
         <h4 className='text-2xl font-light text-slate-800'>{fileName}</h4>
