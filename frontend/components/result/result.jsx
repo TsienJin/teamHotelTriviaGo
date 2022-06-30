@@ -29,14 +29,14 @@ function ResultResultLoading(){
 
 
 
-function FileTextField({statement=""}){
+function FileTextField({statement="", index=0}){
 
   const handleClick = () => {
     navigator.clipboard.writeText(statement)
   }
 
   return(
-    <div onClick={handleClick} className='rounded overflow-hidden hover:shadow transition-all w-full'>
+    <div onClick={handleClick} key={index} className='rounded overflow-hidden hover:shadow transition-all w-full'>
       <div className='w-full h-full p-2 flex flex-row justify-start items-center text-slate-600 cursor-pointer border-l-slate-300 border-l-4 hover:bg-white hover:border-l-6 hover:border-l-red-500 hover:text-slate-900 transition-all '>
         <p>{statement}</p>
       </div>
@@ -66,9 +66,9 @@ function FileWrapper({fileName="", statements=[]}){
       <div className={`transition-all h-fit ${isExpand?"max-h-[1000vh]":"max-h-0 opacity-0"} flex flex-col justify-start items-center bg-slate-100`}>
         <span className='bg-slate-300 py-px w-full mb-2'></span>
         <div className='flex flex-col gap-y-2 p-2 w-full'>
-          {statements.map(item=>{
+          {statements.map((item, index)=>{
             return(
-              <FileTextField statement={item} />
+              <FileTextField statement={item} index={index} />
             )
           })}
         </div>
