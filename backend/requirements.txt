@@ -1,6 +1,6 @@
 amqp==5.1.1
 asgiref==3.5.2
-backports.zoneinfo==0.2.1
+backports.zoneinfo==0.2.1;python_version<"3.9"
 billiard==3.6.4.0
 boto3==1.23.9
 botocore==1.26.9
