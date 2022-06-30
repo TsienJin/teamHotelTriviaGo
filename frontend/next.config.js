@@ -4,6 +4,9 @@ const nextConfig = {
   api: {
     bodyParser: false,
   },
+  eslint:{
+    ignoreDuringBuilds: true,
+  }
 }
 
 module.exports = nextConfig
