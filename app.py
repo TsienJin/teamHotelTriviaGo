@@ -28,14 +28,16 @@ def generate_mda():
         user_file = request.files['files']
         session_token = request.form.get("sessionToken")
         user_password = request.form.get("usrPassword")
+        user_keyword = request.form.get("usrKeyword")
         time = request.form.get("time")
 
         print('user_file:', user_file)
         print('session token:', session_token)
         print('user_password:', user_password)
+        print('user_keyword:', user_keyword)
         print('time:', time)
 
-        # generate_mda_main('NTU', user_file)
+        # generate_mda_main(user_keyword, user_file)
         return jsonify({
             "message": 'files received',
             "sessionToken": session_token,
