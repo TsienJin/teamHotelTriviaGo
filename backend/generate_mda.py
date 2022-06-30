@@ -304,4 +304,4 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
 
 def generate_mda_main(usrKeyword, pdf_file):
     pdf, reader = read_pdf(pdf_file)
-    find_keywork_in_pdf(usrKeyword, pdf, reader)
+    return find_keywork_in_pdf(usrKeyword, pdf, reader)
