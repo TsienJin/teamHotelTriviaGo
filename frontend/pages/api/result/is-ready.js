@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     try {
         await client.connect()
         const result = await client.db("HotelTriviaGodb").collection("mdna_test").findOne({sessionToken: req.body.pid}, {projection: {usrPassword: 1, isComplete: 1, _id:0}})
-        console.log(result)
+        // console.log(result)
         if(await result.isComplete){
             statusState = true
         }
