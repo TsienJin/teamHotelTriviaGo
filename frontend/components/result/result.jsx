@@ -42,7 +42,7 @@ function FileTextField({statement="", index=0}){
   }
 
   return(
-    <div onClick={handleClick} key={index} className='rounded overflow-hidden hover:shadow transition-all w-full relative'>
+    <div onClick={handleClick} key={index} className={`rounded overflow-hidden hover:shadow transition-all w-full relative ${isCoppied?"shadow":""}`}>
       <div className='w-full h-full p-2 flex flex-row justify-start items-center text-slate-600 cursor-pointer border-l-slate-300 border-l-4 hover:bg-white hover:border-l-6 hover:border-l-red-500 hover:text-slate-900 transition-all '>
         <p className='select-none'>{statement}</p>
       </div>
