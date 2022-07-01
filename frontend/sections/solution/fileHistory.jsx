@@ -33,7 +33,7 @@ function FileHistoryJob({job}){
                     <p className='text-slate-500 font-extralight text-sm'>This job is still being processed. Kindly refresh this page in a few minutes time.</p>
                 </div>
                 <div className={`${job.isComplete?"":""}`}>
-                    {Object.keys(job.mdna).map(name=>{
+                    {job.fileNames.map(name=>{
                         return(
                             <p className='text-slate-500 font-light text-lg px-2'>{name}</p>
                         )
