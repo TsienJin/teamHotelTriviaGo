@@ -17,16 +17,26 @@ celery = make_celery(app)
 
 
 @celery.task()
-def cal_results(user_keyword, user_file):
+def cal_results(user_keyword, user_file, session_token):
     res = generate_mda_main(user_keyword, user_file)
     print(res)
+    db = connect_db()
+    mdna_collection = connect_collection(db)
+    data = mdna_collection.update_one({"sessionToken": session_token}, {
+        "$set": {
+            'mdna': res['mdna'],
+            'isComplete': res['isComplete'],
+            'isError': res['isError']
+        }
+    })
+    print(data)
 
 
 @app.route('/')
 def home():
-    # db = connect_db()
-    # mdna_collection = connect_collection(db)
-    # insert_item(mdna_collection, {"message": 'hello'})
+    db = connect_db()
+    mdna_collection = connect_collection(db)
+    print(list(mdna_collection.find({})))
     return 'Team Hotel Trivia Go Backend'
 
 
@@ -51,7 +61,7 @@ def generate_mda():
         print('user_keyword:', user_keyword)
         print('time:', time)
 
-        res = cal_results(user_keyword, user_file)
+        res = cal_results(user_keyword, user_file, session_token)
 
         return jsonify({
             "message": 'files received',
