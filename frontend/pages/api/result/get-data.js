@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         res.status(405).send({message: 'Method not allowed'})
     }
 
-    console.log(req.body)
+    // console.log(req.body)
 
     var statusCode = 200
     var payload = {}
