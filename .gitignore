@@ -4,3 +4,4 @@
 # backend
 __pycache__
 venv/
+.env

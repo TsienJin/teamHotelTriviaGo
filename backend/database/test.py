@@ -1,16 +1,19 @@
 from pymongo import MongoClient
+import os
 
 
 def connect_db():
     client = MongoClient(
-        "mongodb+srv://Hotel_Trivia_Go:HotelTriviaGo@cluster0.jnnd9.mongodb.net/myFirstDatabase"
+       os.environ['MONGO_URI']
     )
-    db = client['myFirstDatabase']
+    db = client['HotelTriviaGodb']
     return db
 
+
 def connect_collection(db):
-    mdna_collection = db['mdna']
+    mdna_collection = db['mdna_test']
     return mdna_collection
+
 
 def insert_item(mdna_collection, item):
     temp = mdna_collection.insert_one(item)
