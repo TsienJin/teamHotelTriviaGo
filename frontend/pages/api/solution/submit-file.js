@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     body: req.body,
   });
   const resAPIData = await resAPI.json();
-  console.log(await resAPIData);
+  // console.log(await resAPIData);
 
   res.status(200).send(await resAPIData);
 }

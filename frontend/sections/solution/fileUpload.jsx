@@ -251,7 +251,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                                 </div>
                             </div>
                             <div className='w-full flex flex-col justify-center items-center mt-3'>
-                                <button className={`bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-500 transition-colors z-0 ${file.length?"bg-white text-green-600 border-2 border-green-600 hover:border-green-500 hover:text-white":""}`} onClick={buttonClick}>Choose a file</button>
+                                <button className={` transition-colors rounded px-4 py-2 z-10 ${file.length>0?"bg-white text-green-600 border-2 border-green-600":"bg-green-600 text-white shadow hover:bg-green-500"}`} onClick={buttonClick}>Choose a file</button>
                             </div>
                         </div>
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>

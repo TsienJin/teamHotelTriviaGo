@@ -4,7 +4,7 @@ import axios from 'axios';
 import FormData from 'form-data';
 import fs from 'fs'
 
-const { MongoClient } = require("mongodb")
+import { MongoClient } from "mongodb"
 
 import middleware from '../../../middleware/middleware';
 const handler = nextConnect();
@@ -12,7 +12,15 @@ handler.use(middleware);
 
 
 
-async function writeToMongo(body){
+async function writeToMongo(body, files){
+
+  const fileNames = []
+
+  if(files.files.length){
+    files.files.forEach(item=>{fileNames.push(item.originalFilename)})
+  } else {
+    fileNames.push(files.files.originalFilename)
+  }
 
   const mongoDataToInsert = {
     isComplete: false,
@@ -21,7 +29,8 @@ async function writeToMongo(body){
     usrPassword: body.usrPassword,
     usrKeyword: body.usrKeyword,
     time: body.time,
-    mdna: {}
+    mdna: {},
+    fileNames: fileNames,
   }
 
   const client = new MongoClient(process.env.MONGO_URI)
@@ -51,7 +60,7 @@ handler.post(async (req, res) => {
     const files = req.files;
     const body = req.body;
 
-    writeToMongo(body)
+    writeToMongo(body, files)
 
     const formToSend = new FormData();
     formToSend.append('usrPassword', body.usrPassword)
@@ -66,7 +75,7 @@ handler.post(async (req, res) => {
     }
 
     const result = await axios.post(
-      'http://127.0.0.1:5000/mda/generate',
+      process.env.API_URL_FILEUPLOAD,
       formToSend,
       { headers: { 'Content-Type': 'multipart/form-data' } }
     );
@@ -76,7 +85,6 @@ handler.post(async (req, res) => {
     resCode = 500
     resMessage = "Error occured"
   } finally {
-    console.log("here")
     res.status(resCode).json({message: resMessage})
   }
 });
