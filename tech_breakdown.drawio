@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="orqOtBOW0S_3Y-mfQR9t" name="API Calls">
-        <mxGraphModel dx="558" dy="374" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1252" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -106,7 +106,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="pqtLrWvmuWyiWLzkSUhF" name="Diagram">
-        <mxGraphModel dx="729" dy="489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1252" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="tuvx_-tGYI6wsvTcFcl7-0"/>
                 <mxCell id="tuvx_-tGYI6wsvTcFcl7-1" parent="tuvx_-tGYI6wsvTcFcl7-0"/>
@@ -173,39 +173,36 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="tuvx_-tGYI6wsvTcFcl7-37" value="Backend Processing (Flask)" style="swimlane;sketch=0;rounded=0;strokeColor=#FFFF00;fillColor=none;" parent="tuvx_-tGYI6wsvTcFcl7-1" vertex="1">
-                    <mxGeometry x="770" y="80" width="350" height="710" as="geometry"/>
+                    <mxGeometry x="770" y="80" width="370" height="710" as="geometry"/>
                 </mxCell>
-                <mxCell id="rxtQG-LiJ5T4q6l2boea-0" style="edgeStyle=orthogonalEdgeStyle;html=1;fillColor=#FFFFFF;entryX=0;entryY=0.333;entryDx=0;entryDy=0;entryPerimeter=0;" parent="tuvx_-tGYI6wsvTcFcl7-37" target="rxtQG-LiJ5T4q6l2boea-2" edge="1">
+                <mxCell id="rxtQG-LiJ5T4q6l2boea-0" style="edgeStyle=orthogonalEdgeStyle;html=1;fillColor=#FFFFFF;entryX=-0.022;entryY=0.35;entryDx=0;entryDy=0;entryPerimeter=0;" parent="tuvx_-tGYI6wsvTcFcl7-37" target="q2dfp2AdItrQWjrZBrLS-2" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-140" y="340" as="sourcePoint"/>
-                        <mxPoint x="100" y="90" as="targetPoint"/>
+                        <mxPoint x="-137.5" y="350.01" as="sourcePoint"/>
+                        <mxPoint x="112.5" y="100.00000000000001" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="40" y="340"/>
-                            <mxPoint x="40" y="90"/>
+                            <mxPoint x="43" y="350"/>
+                            <mxPoint x="43" y="131"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="rxtQG-LiJ5T4q6l2boea-1" value="Flask Backend &#10;(deployed on Heroku)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="tuvx_-tGYI6wsvTcFcl7-37" vertex="1">
-                    <mxGeometry x="110" y="50" width="125" height="60" as="geometry">
-                        <mxRectangle x="115" y="45" width="120" height="30" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="rxtQG-LiJ5T4q6l2boea-2" value="Take in &#10;- Input file,&#10;- Keyword,&#10;- Password" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="rxtQG-LiJ5T4q6l2boea-1" vertex="1">
-                    <mxGeometry y="30" width="125" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="rxtQG-LiJ5T4q6l2boea-4" value="Artificial Intelligence&#10;(Keyword Detection)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="tuvx_-tGYI6wsvTcFcl7-37" vertex="1">
-                    <mxGeometry x="112.5" y="170" width="125" height="80" as="geometry">
+                    <mxGeometry x="112.5" y="230" width="125" height="80" as="geometry">
                         <mxRectangle x="10" y="30" width="120" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="rxtQG-LiJ5T4q6l2boea-12" value="Process Input File&lt;br&gt;&lt;br&gt;Churn out data" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="rxtQG-LiJ5T4q6l2boea-4" vertex="1">
                     <mxGeometry y="30" width="125" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="rxtQG-LiJ5T4q6l2boea-10" value="" style="endArrow=classic;html=1;exitX=0.482;exitY=1.075;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.462;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="tuvx_-tGYI6wsvTcFcl7-37" source="rxtQG-LiJ5T4q6l2boea-2" target="rxtQG-LiJ5T4q6l2boea-4" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="90" y="180" as="sourcePoint"/>
-                        <mxPoint x="150" y="140" as="targetPoint"/>
+                <mxCell id="q2dfp2AdItrQWjrZBrLS-1" value="Flask Backend&#10;(deployed on Heroku)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="tuvx_-tGYI6wsvTcFcl7-37">
+                    <mxGeometry x="112.5" y="80" width="137.5" height="90" as="geometry">
+                        <mxRectangle x="10" y="30" width="120" height="30" as="alternateBounds"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="q2dfp2AdItrQWjrZBrLS-2" value="Take in&amp;nbsp;&amp;nbsp;&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;- Input file,&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;- Keyword,&lt;br style=&quot;padding: 0px ; margin: 0px&quot;&gt;- Password" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="q2dfp2AdItrQWjrZBrLS-1">
+                    <mxGeometry y="30" width="137.5" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="q2dfp2AdItrQWjrZBrLS-3" style="edgeStyle=none;html=1;entryX=0.556;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="tuvx_-tGYI6wsvTcFcl7-37" source="q2dfp2AdItrQWjrZBrLS-2" target="rxtQG-LiJ5T4q6l2boea-4">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="tuvx_-tGYI6wsvTcFcl7-95" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;fillColor=#FFFFFF;startArrow=classic;startFill=1;" parent="tuvx_-tGYI6wsvTcFcl7-1" source="tuvx_-tGYI6wsvTcFcl7-34" target="tuvx_-tGYI6wsvTcFcl7-84" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -215,12 +212,12 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="rxtQG-LiJ5T4q6l2boea-14" value="" style="endArrow=classic;html=1;exitX=0.476;exitY=1.06;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.011;entryY=0.811;entryDx=0;entryDy=0;entryPerimeter=0;" parent="tuvx_-tGYI6wsvTcFcl7-1" source="rxtQG-LiJ5T4q6l2boea-12" target="tuvx_-tGYI6wsvTcFcl7-34" edge="1">
+                <mxCell id="rxtQG-LiJ5T4q6l2boea-14" value="" style="endArrow=classic;html=1;exitX=0.548;exitY=1.08;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1.011;entryY=0.811;entryDx=0;entryDy=0;entryPerimeter=0;" parent="tuvx_-tGYI6wsvTcFcl7-1" source="rxtQG-LiJ5T4q6l2boea-12" target="tuvx_-tGYI6wsvTcFcl7-34" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="930" y="480" as="sourcePoint"/>
                         <mxPoint x="980" y="430" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="942" y="463"/>
+                            <mxPoint x="951" y="463"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
