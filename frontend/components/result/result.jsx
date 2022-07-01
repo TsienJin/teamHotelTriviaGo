@@ -111,14 +111,14 @@ function FileWrapper({fileName="", statements=[], index=0}){
     
 function ResultResultResult({data={}}){
   return(
-      <>
+      <div className='flex flex-col w-full justify-start items-center gap-y-4'>
     {Object.keys(data).map((name, index)=>{
       // console.log(data[name])
       return(
         <FileWrapper fileName={name} statements={data[name]} index={index} />
       )
     })}
-      </>
+      </div>
   )
 }
 
