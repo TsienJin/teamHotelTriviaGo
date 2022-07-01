@@ -2,8 +2,9 @@
 {
     _id: BSON,
     sessionToken: TOKEN,
-    time: TIME // string
-    usrPassword: PASSWORD // use bcrypt to encrypt
+    time: TIME, // string
+    usrPassword: PASSWORD, // use bcrypt to encrypt
+    fileNames: [LIST, OF, STRINGS],
     mdna: {
         fileName: [
             line1,
