@@ -20,7 +20,7 @@ function FilePreviewFrame({file={}}){
 
     return(
         <>
-            <div className='bg-white w-full rounded-t-lg flex flex-row justify-between items-center overflow-hidden z-100 '>
+            <div onClick={e=>{}} className='bg-white rounded-t-lg flex flex-row justify-between items-center overflow-hidden z-50 w-full'>
                 <div className='py-2 px-3 '>
                     <span className='text-slate-500'>{file.name}</span>
                 </div>
@@ -30,7 +30,7 @@ function FilePreviewFrame({file={}}){
                     </svg>
                 </div>
             </div>
-            <iframe src={fileSrc} frameborder="0" className='w-full h-full rounded-b-lg'></iframe>
+            <iframe src={fileSrc} frameborder="0" className='w-full h-full rounded-b-lg z-50 sm:max-h-[90vh]'></iframe>
         </>
     )
 }
@@ -41,13 +41,23 @@ function FileName({file={name:"document"}}){
 
     const [modalActive, setModalActive] = useState(false)
 
+    const [fileSrc, setFileSrc] = useState(null)
+
+    const reader = new FileReader()
+    reader.onload = r => {setFileSrc(r.target.result)}
+
+    const fileURL = reader.readAsDataURL(file)
+
     const openModal = () => {
         setModalActive(true)
+        console.log(file)
     }
 
     const closeModal = () => {
         setModalActive(false)
     }
+
+    
 
     return(
         <>
@@ -81,8 +91,8 @@ function FileNameContainer({fileList=[]}){
 function FileSubmitButton({isSending=false, methodSubmit=()=>{console.log('Method missing! FileSubmitButton')}, methodClear=()=>{console.log('Method missing! FileSubmitButtonClear')}}){
 
     return(
-        <div className='w-full flex flex-row justify-end items-center gap-x-2'>
-            <button onClick={methodClear} className='flex flex-row gap-x-1 px-4 py-2 rounded box-border bg-white border-2 border-red-600 text-red-600 transition-colors hover:bg-red-600 hover:text-white z-50'>
+        <div className='w-full flex flex-row justify-end items-center gap-x-2 z-0'>
+            <button onClick={methodClear} className='z=0 flex flex-row gap-x-1 px-4 py-2 rounded box-border bg-white border-2 border-red-600 text-red-600 transition-colors hover:bg-red-600 hover:text-white z-50'>
                 Clear files
             </button>
             <button type='submit' onClick={methodSubmit} className='z-0'>
@@ -171,7 +181,8 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
     const handleDrop = e => {
         e.preventDefault()
         console.log(e.dataTransfer.files)
-        setFile(Array.from(e.dataTransfer.files))
+        setFile(e.dataTransfer.files)
+        setFileArray(Array.from(e.dataTransfer.files))
     }
 
     const handleDropChange = e => {
@@ -251,7 +262,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
                                 </div>
                             </div>
                             <div className='w-full flex flex-col justify-center items-center mt-3'>
-                                <button className={` transition-colors rounded px-4 py-2 z-10 ${file.length>0?"bg-white text-green-600 border-2 border-green-600":"bg-green-600 text-white shadow hover:bg-green-500"}`} onClick={buttonClick}>Choose a file</button>
+                                <button className={` transition-colors rounded px-4 py-2 ${file.length>0?"bg-white text-green-600 border-2 border-green-600":"bg-green-600 text-white shadow hover:bg-green-500"}`} onClick={buttonClick}>Choose a file</button>
                             </div>
                         </div>
                         <label id="drag-file-element" htmlFor='fileUploader' className={`absolute top-0 bottom-0 left-0 right-0  ${file.length?"":""}`}onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></label>

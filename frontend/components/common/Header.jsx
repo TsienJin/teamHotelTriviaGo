@@ -21,7 +21,7 @@ function HeaderCTA({text="Link Button", link="/", target="_self"}){
 
 export default function Header() {
   return (
-    <div className='z-50 px-6 py-4 sm:px-32 sm:py-4 sticky top-0 shadow-md  w-full flex flex-row justify-between items-center bg-white backdrop-blur-xl bg-opacity-80 backdrop-contrast-125 backdrop-saturate-150'>
+    <div className='z-40 px-6 py-4 sm:px-32 sm:py-4 sticky top-0 shadow-md  w-full flex flex-row justify-between items-center bg-white backdrop-blur-xl bg-opacity-80 backdrop-contrast-125 backdrop-saturate-150'>
         <div>
             <Link href={"/"}>
                 <a>
