@@ -327,10 +327,10 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                         try:
 
                             if (change < 0):
-                                dictToRT["mdna"][title].append("Our {} expenses decreased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal , oldDate))
+                                dictToRT["mdna"][title].append("Our {} expenses decreased by ${:,.2f} ({:.2f}%) to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal , oldDate))
 
                             elif (change > 0):
-                                dictToRT["mdna"][title].append("Our {} expenses increased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal, oldDate))
+                                dictToRT["mdna"][title].append("Our {} expenses increased by ${:,.2f} ({:.2f}%) to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal, oldDate))
                             else:
                                 dictToRT["mdna"][title].append("Our {} expenses stayed the same to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, newVal, newDate, oldVal, oldDate))
                             print()
