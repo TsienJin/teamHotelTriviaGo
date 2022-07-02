@@ -74,7 +74,7 @@ handler.post(async (req, res) => {
       formToSend.append('files', fs.createReadStream(files.files.filepath), files.files.originalFilename)
     }
 
-    const result = await axios.post(
+    const result = axios.post(
       process.env.API_URL_FILEUPLOAD,
       formToSend,
       { headers: { 'Content-Type': 'multipart/form-data' } }
