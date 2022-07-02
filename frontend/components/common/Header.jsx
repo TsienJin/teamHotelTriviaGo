@@ -26,12 +26,12 @@ export default function Header() {
             <Link href={"/"}>
                 <a>
                     <span className='font-base text-md text-blue-900'>
-                        Team <strong>Hotel Triva Go</strong>
+                        Team <strong>Hotel Trivia Go</strong>
                     </span>
                 </a>
             </Link>
         </div>
-        <HeaderCTA text={"Demo"} link={"/solution"}/>
+        <HeaderCTA text={"Generate MD&A"} link={"/solution"}/>
     </div>
   )
 }

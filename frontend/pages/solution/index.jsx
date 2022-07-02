@@ -24,7 +24,7 @@ export default function SolutionPage({}) {
 
   return (
     <>
-      <IndexSectionWrapper bottomText={bottomText} bottomTextClass="text-slate-300" heading='Upload your PDF files' subHeading='Do not upload any sensitive or privalaged information as this is a proof of concept' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
+      <IndexSectionWrapper bottomText={bottomText} bottomTextClass="text-slate-300" heading='Upload your PDF files' subHeading='Do not upload any sensitive or privileged information as this is a proof of concept' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
         <FileUpload />
       </IndexSectionWrapper>
       <IndexSectionWrapper bgColour={`bg-slate-50 ${fileHistory.length==0?"cursor-progress":""} z-10`} heading='' subHeading={fileHistory.length>0?`Previous file analysis, showing the latest ${fileHistory.length>1?fileHistory.length:""} job${fileHistory.length>1?"s":""}`:"Loading history..."} >

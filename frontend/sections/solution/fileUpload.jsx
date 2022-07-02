@@ -125,7 +125,7 @@ function FileKeywordField({methodKeyword=()=>{}}){
     return(
         <div className='w-full flex flex-col gap-y-1'>
             <label htmlFor='fileKeywordField'>
-                <span className='text-slate-500 font-light'>(Optional) Keywords seperated by commas</span>
+                <span className='text-slate-500 font-light'>(Optional) Keywords separated by commas</span>
             </label>
             <input type="text" onChange={methodKeyword} id='fileKeywordField' className='w-full outline-1 outline-blue-400 px-3 py-2 border-2 border-slate-300 rounded' placeholder='Keywords'/>
         </div>

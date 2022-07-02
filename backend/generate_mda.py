@@ -87,8 +87,8 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                             else:
                                 rowName += i
                         rowName = rowName.strip()
-                        rowName = rowName.capitalize()
-
+                        rowName = rowName.title()
+                        
                         # Since the values of a financial statement is always the last few values
                         # Following example is assuming oldVal is the most right value, and the newVal is the one left of it
                         # Possible like page 9 of sample1.pdf, where there are 4 values instead
