@@ -19,7 +19,26 @@ This is done by automating the process of extracting relevant economic data from
 
 Lawyers can use our solution by simply uploading a PDF copy of the relevant financial statements on our designated website, together with keywords provided by the user. Statements for the MD&A section will be generated automatically. Thereafter, the lawyer can make any necessary amendments or additions, such as to the possible reasons for the period-on-period changes, in finalising the MD&A into the prospectus that they were working on. Additionally, given that company financial statements are likely to contain sensitive data, our solution provides for data security by providing an option for lawyers to set a password when uploading financial statements, which would later be required to access the generated excerpts of the MD&A.
 
-Alternatively, the data can also be accessed via a `RESTFUL` API for this solution to be easily integrated into the existing workflows of legal entities working with other third-party service providers.
+Alternatively, the data can also be accessed via a `RESTFUL` API for this solution to be easily integrated into the existing workflows of legal entities working with other third-party service providers. This endpoint is available on `http://api.teamhotel.dev/mda/get?session_token=[UUID]` via `GET` method. The schema is as follows:
+
+```
+{
+    _id: ObjectId(BSON),
+    isComplete: BOOL,
+    isError: BOOL,
+    sessionToken: STRING, // uuid
+    usePassword: STRING, // hash
+    time: STRING, // DD-MM-YYYY, HH:MM:SS AM/PM
+    mdna: { // Object
+        nameOfFile1.pdf: [ // array
+            'arrOfSTRING', // string
+        ],
+    },
+    fileNames: [ // array
+        'arrOfSTRING', // string
+    ]
+}
+```
 
 
 # Technology Stack
