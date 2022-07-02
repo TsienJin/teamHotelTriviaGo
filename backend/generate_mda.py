@@ -1,8 +1,6 @@
 import PyPDF2 # For numPages
 import pdfplumber
 from datetime import date
-import requests
-
 
 def read_pdf(pdf_file):
     pdf = pdfplumber.open(pdf_file)
