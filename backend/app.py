@@ -112,3 +112,14 @@ def generate_mda():
             "user_password": user_password,
             "time": time
         }), 200
+
+
+@app.route('/mda/get', methods=['GET'])
+def get_mda():
+    session_token = request.args.get('session_token')
+    db = connect_db()
+    mda_collection = connect_collection(db)
+
+    data = mda_collection.find_one({'sessionToken': session_token})
+    data['_id'] = str(data['_id'])
+    return data
