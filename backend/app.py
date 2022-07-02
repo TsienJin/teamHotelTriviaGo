@@ -68,7 +68,7 @@ def generate_mda():
         print('user_keyword:', user_keyword)
         print('time:', time)
 
-        res = cal_results.delay(user_keyword, user_files, session_token)
+        res = cal_results(user_keyword, user_files, session_token)
 
         return jsonify({
             "message": 'files received',
