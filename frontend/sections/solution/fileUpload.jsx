@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import hashPassword from '../../passwords/hash'
 import checkHashPassword from '../../passwords/checkHash'
-
 import ModalWrapper from '../../modal/ModalWrapper'
+
 import { useRouter } from 'next/router'
 
 
@@ -190,7 +190,7 @@ export default function FileUpload({method=()=>{console.log('Method missing! Fil
         console.log(e.target.files)
         setFile(e.target.files)
         setFileArray(Array.from(e.target.files))
-        console.log(file)
+        // console.log(file)
     }
 
     const handlePassword = e => {
