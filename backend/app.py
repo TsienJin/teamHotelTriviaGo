@@ -16,20 +16,42 @@ app.config.update(CELERY_BROKER_URL=os.environ.get('REDIS_URL',
 CORS(app)
 celery = make_celery(app)
 
+# @celery.task()
+# def cal_results(user_keyword, user_files_path, session_token):
+#     output = {'mdna': {}, 'isComplete': True, 'isError': True}
+#     for user_file_path in user_files_path:
+#         with open(user_file_path, 'r'):
+#             user_file = user_file_path.read()
+#             print(user_file)
+#             if os.path.exists(user_file_path):
+#                 os.remove(user_file_path)
+#             res = generate_mda_main(user_keyword, user_file)
+#             output['mdna'] = {**output['mdna'], **res['mdna']}
+#             output['isComplete'] = output['isComplete'] and res['isComplete']
+#             output['isError'] = output['isError'] and res['isError']
+
+#     pprint(output)
+#     db = connect_db()
+#     mdna_collection = connect_collection(db)
+#     data = mdna_collection.update_one({"sessionToken": session_token}, {
+#         "$set": {
+#             'mdna': output['mdna'],
+#             'isComplete': output['isComplete'],
+#             'isError': output['isError']
+#         }
+#     })
+#     print(data)
+
 
 @celery.task()
-def cal_results(user_keyword, user_files_path, session_token):
+def cal_results(user_keyword, user_files, session_token):
     output = {'mdna': {}, 'isComplete': True, 'isError': True}
-    for user_file_path in user_files_path:
-        with open(user_file_path, 'r'):
-            user_file = user_file_path.read()
-            print(user_file)
-            if os.path.exists(user_file_path):
-                os.remove(user_file_path)
-            res = generate_mda_main(user_keyword, user_file)
-            output['mdna'] = {**output['mdna'], **res['mdna']}
-            output['isComplete'] = output['isComplete'] and res['isComplete']
-            output['isError'] = output['isError'] and res['isError']
+    for user_file in user_files:
+        print(user_file)
+        res = generate_mda_main(user_keyword, user_file)
+        output['mdna'] = {**output['mdna'], **res['mdna']}
+        output['isComplete'] = output['isComplete'] and res['isComplete']
+        output['isError'] = output['isError'] and res['isError']
 
     pprint(output)
     db = connect_db()
@@ -73,14 +95,16 @@ def generate_mda():
         print('user_keyword:', user_keyword)
         print('time:', time)
 
-        user_files_path = []
-        for user_file in user_files:
-            path = f"{user_file.filename}"
-            user_file.save(path)
-            user_files_path.append(path)
-        print('user_files_path:', user_files_path)
+        # user_files_path = []
+        # for user_file in user_files:
+        #     path = f"{user_file.filename}"
+        #     user_file.save(path)
+        #     user_files_path.append(path)
+        # print('user_files_path:', user_files_path)
 
-        res = cal_results.delay(user_keyword, user_files_path, session_token)
+        # res = cal_results.delay(user_keyword, user_files_path, session_token)
+
+        res = cal_results(user_keyword, user_files, session_token)
 
         return jsonify({
             "message": 'files received',
