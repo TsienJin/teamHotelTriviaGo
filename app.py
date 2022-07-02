@@ -9,10 +9,6 @@ from database.test import connect_db, connect_collection, insert_item
 from tasks import make_celery
 
 app = Flask(__name__)
-app.config.update(CELERY_BROKER_URL=os.environ.get('REDIS_URL',
-                                                   'redis://localhost:6379'),
-                  CELERY_RESULT_BACKEND=os.environ.get(
-                      'REDIS_URL', 'redis://localhost:6379'))
 CORS(app)
 celery = make_celery(app)
 
