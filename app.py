@@ -36,7 +36,7 @@ def cal_results(user_keyword, user_file, session_token):
 def home():
     db = connect_db()
     mdna_collection = connect_collection(db)
-    print(list(mdna_collection.find({})))
+    # print(list(mdna_collection.find({})))
     return 'Team Hotel Trivia Go Backend'
 
 
