@@ -1,8 +1,6 @@
 import PyPDF2 # For numPages
 import pdfplumber
 from datetime import date
-import requests
-
 
 def read_pdf(pdf_file):
     pdf = pdfplumber.open(pdf_file)
@@ -48,6 +46,7 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
     usrKeyword = usrKeyword.split(',')
     for i in range(len(usrKeyword)):
         usrKeyword[i] = usrKeyword[i].strip()
+        usrKeyword[i] = usrKeyword[i].lower()
 
     found = 0     # If found = 1, means found the keyWord in PDF, if found = 0, means cannot find keyWord in PDF, need key in a new keyWord again
     unitMultiply = 0
