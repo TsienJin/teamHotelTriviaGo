@@ -27,16 +27,16 @@ def cal_results(user_keyword, user_files, session_token):
         output['isError'] = output['isError'] and res['isError']
 
     pprint(output)
-    # db = connect_db()
-    # mdna_collection = connect_collection(db)
-    # data = mdna_collection.update_one({"sessionToken": session_token}, {
-    #     "$set": {
-    #         'mdna': output['mdna'],
-    #         'isComplete': output['isComplete'],
-    #         'isError': output['isError']
-    #     }
-    # })
-    # print(data)
+    db = connect_db()
+    mdna_collection = connect_collection(db)
+    data = mdna_collection.update_one({"sessionToken": session_token}, {
+        "$set": {
+            'mdna': output['mdna'],
+            'isComplete': output['isComplete'],
+            'isError': output['isError']
+        }
+    })
+    print(data)
 
 
 @app.route('/')
