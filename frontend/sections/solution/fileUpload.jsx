@@ -37,7 +37,9 @@ function FilePreviewFrame({file={}}){
 
 
 
-function FileName({file={name:"document"}}){
+function FileName({file={name:"document", size:0}}){
+
+    console.log(file)
 
     const [modalActive, setModalActive] = useState(false)
 
@@ -61,8 +63,9 @@ function FileName({file={name:"document"}}){
 
     return(
         <>
-            <div onClick={openModal} className='bg-blue-100 text-blue-800 py-2 px-3 rounded cursor-default select-none hover:bg-blue-600 hover:text-white hover:shadow hover:shadow-blue-800 transition-all'>
+            <div onClick={openModal} className='flex flex-row justify-between items-center bg-blue-100 text-blue-800 py-2 px-3 rounded cursor-default select-none hover:bg-blue-600 hover:text-white hover:shadow hover:shadow-blue-800 transition-all'>
                 <span>{file.name}</span>
+                <span className='text-sm font-thin opacity-70'>{(file.size/1000000).toFixed(2)} Mb</span>
             </div>
             {modalActive && <ModalWrapper closeMethod={closeModal}><FilePreviewFrame file={file}/></ModalWrapper>}
         </>
@@ -77,7 +80,7 @@ function FileNameContainer({fileList=[]}){
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className='font-light'>Click on file to preview</span>
+                <span className='font-light'>Click on file to preview. Maximum 3 Mb total upload size.</span>
             </div>
             {fileList.map(item=>{
                 return(
