@@ -40,7 +40,7 @@ function Testimony({props}){
 function VideoDemo({props}){
 
   return(
-      <iframe className='w-full h-48 sm:h-[60vh] rounded-lg shadow-lg' src="https://www.youtube.com/embed/xm3YgoEiEDc" title="TeamTriviaGo Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe className='w-full h-48 sm:h-[60vh]' src="https://www.youtube.com/embed/ePtYqfwluSI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   )
 }
 
