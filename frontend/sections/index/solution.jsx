@@ -76,7 +76,7 @@ export default function SectionProuct({props}){
     const features = {
         // standard: ['Keyword analysis'],
         // elite: ['Keyword analysis', 'Automatic calculations'],
-        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Password protection for analysied results', 'Click to copy MD&A statements'],
+        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Password protection for analysed results', 'Click to copy MD&A statements'],
         // enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', 'Custom built services','99.9% SLA uptime guarenteed'],
 
     }
