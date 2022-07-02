@@ -17,7 +17,7 @@ def calculateChange(oldVal, newVal):
 
 # Return float
 
-def becomeNumber(string):
+def becomeNumber(string):   
     thingsToReplace = [',', '(', ')', ' ']
     
     for i in thingsToReplace:
@@ -61,7 +61,7 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
     try:
         # Iterating all the possible keyWords in usrKeyword
         for keyWord in usrKeyword:
-            # print("Currently checking for keyWord: '{}'".format(keyWord))
+
             # Iterating all pages of PDF to find keyWord
             for x in range(reader.numPages):
                 pageData = pdf.pages[x]
@@ -109,9 +109,7 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                                     # After getting the month, try to get the day
                                     for i in range(0, 101):
                                         if (textHeading.split()[i] == word):
-        #                                     if (type(daysIndexToTry) is int):
-        #                                         print("TRIGGERED {}".format(textHeading.split()[i + daysIndexToTry].strip().strip(',')))
-        #                                     print(textHeading.split()[i + 1].strip().strip(',').isdigit() and len(textHeading.split()[i + 1].strip().strip(',')) <= 2)
+
                                             try:
                                                 if (type(daysIndexToTry) is list):
                                                     for daysIndex in daysIndexToTry:
@@ -123,8 +121,6 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                                                             days.append(int(textHeading.split()[i + daysIndexToTry].strip().strip(',')))
                                             except:
                                                 continue
-        #                             print("daysIndexToTry = {}, type(daysIndexToTry) = {}, days = ".format(daysIndexToTry, type(daysIndexToTry)))
-        #                             print(days)
 
                                 # To determine which month is the earlier one, assuming there are only 2 months value
                                 if (len(months) >= 2):
@@ -175,9 +171,6 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
                                         unitMultiplyString = "1" + word.replace("'", '')
                                         unitMultiplyString = unitMultiplyString.replace("’", '')
                                         unitMultiply = int(unitMultiplyString.replace('$',''))
-        #                             print("unitMultiply = {}".format(unitMultiply))
-
-                                # To get the currency
 
                                 # To get the years
                                 try:
@@ -332,17 +325,13 @@ def find_keywork_in_pdf(usrKeyword, pdf, reader):
 
                         # Printing out the drafting respectively based on the different cases
                         try:
-                            # print("From page {}:".format(x + 1))
 
                             if (change < 0):
-                                # print("Our {} expenses decreased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal , oldDate))
                                 dictToRT["mdna"][title].append("Our {} expenses decreased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal , oldDate))
 
                             elif (change > 0):
-                                # print("Our {} expenses increased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal, oldDate))
                                 dictToRT["mdna"][title].append("Our {} expenses increased by ${:,.2f} ({:.2f})% to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, abs(changeVal), abs(change), newVal, newDate, oldVal, oldDate))
                             else:
-                                # print("Our {} expenses stayed the same to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, newVal, newDate, oldVal, oldDate))
                                 dictToRT["mdna"][title].append("Our {} expenses stayed the same to ${:,.2f} in {}, from ${:,.2f} in {}, as a result of [company to provide reason].".format(rowName, newVal, newDate, oldVal, oldDate))
                             print()
 
