@@ -18,7 +18,7 @@ export default function ModalWrapper({children, closeMethod=()=>{}}) {
 
   return (
     <>
-      <div onClick={closeMethod} className='bg-slate-400 bg-opacity-70 backdrop-saturate-[0.8] backdrop-blur-md fixed bottom-0 top-0 left-0 right-0 z-[100] flex flex-col justify-center items-center sm:px-16 sm:py-12'>
+      <div onClick={closeMethod} className='z-10 bg-slate-400 bg-opacity-70 backdrop-saturate-[0.8] backdrop-blur-md flex flex-col absolute justify-center items-center sm:px-16 sm:py-12 top-0 left-0 right-0 bottom-0 overflow-hidden'>
         {children}
       </div>
     </>

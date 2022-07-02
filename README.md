@@ -13,7 +13,7 @@ We are a team of 6 students from SMU and NTU, studying Law and Computer Science.
 
 # How can the efficiency of (MD&A) section drafting be improved?
 
-To (adress problem statement), our team has....
+Our team has developed a solution to replace manual data entry in an effort to improve lawyers' work efficiency when drafting the Management's Discussion and Analysis (MD&A) in the prospectus in Capital Market US-related deals (SMU LIT Hackathon Problem Statement, 2022).
 
 
 # Technology Stack
