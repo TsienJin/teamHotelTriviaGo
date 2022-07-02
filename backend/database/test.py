@@ -3,8 +3,9 @@ import os
 
 
 def connect_db():
+    print(os.environ.get('MONGO_URI'))
     client = MongoClient(
-       os.environ['MONGO_URI']
+       os.environ.get('MONGO_URI')
     )
     db = client['HotelTriviaGodb']
     return db
