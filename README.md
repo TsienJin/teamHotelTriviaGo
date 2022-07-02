@@ -42,6 +42,8 @@ Alternatively, the data can also be accessed via a `RESTFUL` API for this soluti
 }
 ```
 
+**Note:** Sample files can be found [here](https://github.com/TsienJin/teamHotelTriviaGo/tree/main/sampleFinancialStatements)
+
 
 # Technology Stack
 - [Next.js](https://nextjs.org) hosted on [Vercel](https://vercel.com/)
