@@ -55,3 +55,5 @@ Alternatively, the data can also be accessed via a `RESTFUL` API for this soluti
 - [Handling multipart-form data on Next.js backend | formidable](https://chadalen.com/blog/how-to-use-a-multipart-form-in-nextjs-using-api-routes)
 - [Formidable docs](https://www.npmjs.com/package/formidable)
 - [React v18 ```useEffect()``` being called twice -- work around](https://javascript.plainenglish.io/react-18-useeffect-double-call-for-apis-emergency-fix-724b7ee6a646)
+- [How To Read PDF Files in Python using PyPDF2](https://www.youtube.com/watch?v=N6Su4Hk8_-g)
+- [Use Python to extract accounting data from a PDF on the web](https://www.youtube.com/watch?v=MjY7UUSAqqE&t=298s)
