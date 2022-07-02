@@ -64,12 +64,12 @@ export default function SolutionWriteUp({props}) {
 
     const copyText = {
         upload: "Upload any PDF document through our portal. Ensure that the file uploaded is correct by looking at the file preview.",
-        analyse: "We utilise machine learning and natural language processing to pick out the relavent information we need to process.",
-        copy: "The analysed data is then formatted and displayed into easy to copy text fields for you.",
+        analyse: "Our programme will automate the manual formulaic data entry and minimise the risk of human errors arising therefrom.",
+        copy: "The analysed data is formatted and excerpts of the MD&A are generated and displayed in click-to-copy text fields for you.",
     }
 
   return (
-    <IndexSectionWrapper heading='How it works' subHeading='Overview of our solution' headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500'>
+    <IndexSectionWrapper heading="Lightning fast MD&A's" subHeading="Better harnes legal associates' expertise through automation." headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500'>
         <div className='flex flex-col gap-4'>
             <div className='flex flex-col-reverse sm:flex-col gap-4 '>
                 <div className='flex flex-col lg:flex-row w-full gap-4'>
@@ -77,7 +77,7 @@ export default function SolutionWriteUp({props}) {
                     <StepCard stepNo={2} title='Analyse' body={copyText.analyse} />
                     <StepCard stepNo={3} title='Copy' body={copyText.copy} />
                 </div>
-                <VideoDemo />
+                {/* <VideoDemo /> */}
             </div>
             <CTACard />
         </div>

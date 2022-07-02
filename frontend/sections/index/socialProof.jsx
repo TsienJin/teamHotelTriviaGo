@@ -4,6 +4,7 @@ import IndexSectionWrapper from '../../components/IndexSectionWrapper'
 import {useRouter} from 'next/router'
 
 
+
 function ImageContainter({props}){
 
   const router = useRouter()
@@ -35,13 +36,22 @@ function Testimony({props}){
   )
 }
 
+
+function VideoDemo({props}){
+
+  return(
+      <iframe className='w-full h-48 sm:h-[60vh] rounded-lg shadow-lg' src="https://www.youtube.com/embed/xm3YgoEiEDc" title="TeamTriviaGo Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  )
+}
+
 export default function SocialProof() {
   return (
-    <IndexSectionWrapper bgColour='bg-gray-100' heading='Hear it from industry experts' subHeading="We'd love to be part of your success story!" headingColour='text-slate-900'>
-        <div className='bg-white flex flex-col sm:flex-row sm:my-12 sm:justify-center sm:items-center rounded-lg shadow-lg'>
+    <IndexSectionWrapper bgColour='bg-gray-100' heading='Watch our demo' subHeading="We'd love to be part of your success story!" headingColour='text-slate-900'>
+        {/* <div className='bg-white flex flex-col sm:flex-row sm:my-12 sm:justify-center sm:items-center rounded-lg shadow-lg'>
             <ImageContainter />
             <Testimony />
-        </div>
+        </div> */}
+        <VideoDemo />
     </IndexSectionWrapper>
   )
 }

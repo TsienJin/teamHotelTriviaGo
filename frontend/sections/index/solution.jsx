@@ -74,31 +74,38 @@ function ProductCard({tier="", description="", features=[], buttonText="", butto
 export default function SectionProuct({props}){
 
     const features = {
-        standard: ['Keyword analysis'],
-        elite: ['Keyword analysis', 'Automatic calculations'],
-        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting'],
-        enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', 'Custom built services','99.9% SLA uptime guarenteed'],
+        // standard: ['Keyword analysis'],
+        // elite: ['Keyword analysis', 'Automatic calculations'],
+        supreme: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Password protection for analysied results', 'Click to copy MD&A statements'],
+        // enterprise: ['Keyword analysis', 'Automatic calculations', 'Customisable field selection', 'Automated MD&A drafting', 'Custom built services','99.9% SLA uptime guarenteed'],
 
     }
 
+// - Automatic calculations 
+// - Customisable field selection 
+// - Data security ensured with password protection 
+// - Fully editable files 
+// - Keyword analysis 
+
+
     const headingText = {
         heading:
-            "Faster workflows",
+            "Quick and automated drafting of MD&A",
         subHeading:
-            "Save man hours, automate your processes with us",
+            "Faster workflows, greater efficiency for legal associates",
     }
 
     const productDescription = {
         supreme: 
-            "Easily automate the boring stuff using machine learning, stay focused on what you do best.",
-        enterprise: 
-            "Everything in Powered but with custom product integrations, contact us for more.",
+            `Automate manual data entry work for lawyers, better harness legal expertise on relevant legal issues`,
+        // enterprise: 
+        //     "Everything in Powered but with custom product integrations, contact us for more.",
     }
 
     return(
         <IndexSectionWrapper heading={headingText.heading} subHeading={headingText.subHeading} bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500' headingColour='text-white'>
             <div className='flex flex-col sm:flex-row w-full gap-8 justify-center'>
-                <ProductCard tier={"Powered"} features={features.supreme} description={productDescription.supreme} buttonText={"Try it now!"} buttonLink={"/solution"}/>
+                <ProductCard tier={"Generate MD&As"} features={features.supreme} description={productDescription.supreme} buttonText={"Generate MD&A now!"} buttonLink={"/solution"}/>
                 {/* <ProductCard tier={"Enterprise"} features={features.enterprise} description={productDescription.enterprise} buttonText={"Experience the demo"} buttonLink={"/solution"}/> */}
             </div>
         </IndexSectionWrapper>
