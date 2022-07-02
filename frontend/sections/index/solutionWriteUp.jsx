@@ -53,7 +53,7 @@ function CTACard({props}){
 function VideoDemo({props}){
 
     return(
-        <iframe className='w-full h-48 sm:h-96 rounded-lg shadow-lg' src="https://www.youtube.com/embed/xm3YgoEiEDc" title="TeamTriviaGo Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe className='w-full h-48 sm:h-96 rounded-lg shadow-lg' src="https://www.youtube.com/embed/WdWTe-nanv4" title="TeamTriviaGo Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     )
 }
 
