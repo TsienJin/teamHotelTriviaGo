@@ -75,7 +75,7 @@ def generate_mda():
 
         user_files_path = []
         for user_file in user_files:
-            path = f"tmp/{user_file.filename}"
+            path = f"{user_file.filename}"
             user_file.save(path)
             user_files_path.append(path)
         print('user_files_path:', user_files_path)
