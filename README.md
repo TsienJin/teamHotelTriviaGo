@@ -15,6 +15,9 @@ We are a team of 6 students from SMU and NTU, studying Law and Computer Science.
 
 Our team has developed a solution to replace manual data entry in an effort to improve lawyers' work efficiency when drafting the Management's Discussion and Analysis (MD&A) in the prospectus in Capital Market US-related deals (SMU LIT Hackathon Problem Statement, 2022).
 
+Our team’s solution is aimed at improving the efficiency of lawyers in drafting the Management’s Discussion and Analysis (“MD&A”) section. This is done by automating the process of extracting relevant economic data from financial statements and drafting excerpts of the MD&A section for the lawyer. By doing so, lawyers can spend minimal time on formulaic data entry work and instead, devote their time to considering the legal issues that their clients may face. Further, the risk of human error from copy-pasting and manual calculations would also be mitigated, if not fully removed.
+
+Lawyers can use our solution by simply uploading a PDF copy of the relevant financial statements on our designated website. Subsequently, an editable version of the draft MD&A would be available for download by the lawyer after ___ minutes. Thereafter, the lawyer can make any necessary amendments or additions, such as to the possible reasons for the period-on-period changes, in finalising the MD&A.
 
 # Technology Stack
 - [Next.js](https://nextjs.org) hosted on [Vercel](https://vercel.com/)
