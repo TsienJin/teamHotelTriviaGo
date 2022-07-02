@@ -69,7 +69,7 @@ export default function SolutionWriteUp({props}) {
     }
 
   return (
-    <IndexSectionWrapper heading="Lightning fast MD&A's" subHeading="Better harness legal associates' expertise through automation." headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500'>
+    <IndexSectionWrapper heading="Lightning fast MD&As" subHeading="Better harness legal associates' expertise through automation." headingColour='text-white' bgColour='bg-gradient-to-tl from-blue-800 to-indigo-500'>
         <div className='flex flex-col gap-4'>
             <div className='flex flex-col-reverse sm:flex-col gap-4 '>
                 <div className='flex flex-col lg:flex-row w-full gap-4'>
