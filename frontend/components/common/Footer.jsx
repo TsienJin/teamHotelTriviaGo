@@ -8,7 +8,7 @@ export default function Footer() {
             <h6 className='font-semibold text-slate-700'>SMU LIT Hackathon 2022</h6>
             <p className='text-slate-500 font-light'>©Team Hotel Trivia Go, 2022</p>
         </div>
-        <div>
+        <div className='hidden'>
             <h6 className="font-semibold text-slate-700">Links</h6>
             <p className='text-slate-500 cursor-pointer font-light'><Link href="https://github.com/TsienJin/teamHotelTriviaGo" passHref><a>GitHub Repo</a></Link></p>
         </div>
